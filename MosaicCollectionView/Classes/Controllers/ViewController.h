@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface ViewController : UICollectionViewController
+@interface ViewController : UICollectionViewController{
+    UIImageView *snapshotBeforeRotation;
+    UIImageView *snapshotAfterRotation;
+}
 
 @end

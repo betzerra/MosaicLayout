@@ -57,7 +57,6 @@
 #pragma mark UICollectionViewLayout
 
 -(void)prepareLayout{
-//    [super prepareLayout];
     
     //  Set all column heights to 0
     columns = [NSMutableArray arrayWithCapacity:kColumnsQuantity];
@@ -65,27 +64,31 @@
         [columns addObject:@(0)];
     }
     
+    //  Get all the items available for the section
     NSUInteger itemsCount = [[self collectionView] numberOfItemsInSection:0];
     itemsAttributes = [NSMutableArray arrayWithCapacity:itemsCount];
     
     for (NSUInteger i = 0; i < itemsCount; i++){
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-
+        
+        //  Get x, y, width and height for indexPath
         NSUInteger columnIndex = [self shortestColumnIndex];
         NSUInteger xOffset = columnIndex * [self columnWidth];
         NSUInteger yOffset = [[columns objectAtIndex:columnIndex] integerValue];
         NSUInteger itemHeight = kItemHeight;
+        
+        /*  Assign all those values to an UICollectionViewLayoutAttributes instance
+         *  and save it on an array */
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         attributes.frame = CGRectMake(xOffset, yOffset, [self columnWidth], itemHeight);
-        
         [itemsAttributes addObject:attributes];
+        
+        //  Set column height
         columns[columnIndex] = @(yOffset + itemHeight);
     }
 }
 
--(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
-//    NSArray *retVal = [super layoutAttributesForElementsInRect:rect];
-    
+-(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{    
     NSPredicate *filterPredicate = [NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes * evaluatedObject, NSDictionary *bindings) {
         BOOL predicateRetVal = CGRectIntersectsRect(rect, [evaluatedObject frame]);
         return predicateRetVal;

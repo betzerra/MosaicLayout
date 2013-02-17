@@ -20,6 +20,7 @@
 		678E52BA16D0535700B34D6F /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52B916D0535700B34D6F /* MosaicCell.m */; };
 		678E52C016D066BC00B34D6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52BF16D066BC00B34D6F /* ViewController.m */; };
 		678E52C316D066EE00B34D6F /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52C216D066EE00B34D6F /* MosaicLayout.m */; };
+		678E52C516D07A3800B34D6F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678E52C416D07A3800B34D6F /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		678E52BF16D066BC00B34D6F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		678E52C116D066EE00B34D6F /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		678E52C216D066EE00B34D6F /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
+		678E52C416D07A3800B34D6F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				678E52C516D07A3800B34D6F /* QuartzCore.framework in Frameworks */,
 				678E529616D0510100B34D6F /* UIKit.framework in Frameworks */,
 				678E529816D0510100B34D6F /* Foundation.framework in Frameworks */,
 				678E529A16D0510100B34D6F /* CoreGraphics.framework in Frameworks */,
@@ -79,6 +82,7 @@
 		678E529416D0510100B34D6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				678E52C416D07A3800B34D6F /* QuartzCore.framework */,
 				678E529516D0510100B34D6F /* UIKit.framework */,
 				678E529716D0510100B34D6F /* Foundation.framework */,
 				678E529916D0510100B34D6F /* CoreGraphics.framework */,
