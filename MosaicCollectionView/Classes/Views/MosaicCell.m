@@ -61,6 +61,10 @@
 
 -(void)setImage:(UIImage *)newImage{
     imageView.image = newImage;
+    imageView.alpha = 0.0;
+    [UIView animateWithDuration:0.3 animations:^{
+        imageView.alpha = 1.0;
+    }];
 }
 
 -(MosaicData *)mosaicData{
