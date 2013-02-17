@@ -10,6 +10,8 @@
 #import "MosaicLayout.h"
 #import "MosaicCell.h"
 
+#define kHeightModule 20
+
 @implementation MosaicViewController
 
 #pragma mark - Private
@@ -43,7 +45,10 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cell";
     MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.image = [self.mosaicDelegate imageForIndexPath:indexPath];
+    cell.mosaicData = [self.mosaicDelegate mosaicDataForIndexPath:indexPath];
+    
+    float randomWhite = (arc4random() % 40 + 10) / 255.0;
+    cell.backgroundColor = [UIColor colorWithWhite:randomWhite alpha:1];
     return cell;
 }
 
@@ -56,10 +61,9 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 #pragma mark - Public
 
 -(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width{
-    CGSize imageSize = [[self.mosaicDelegate imageForIndexPath:indexPath] size];
-    
-    float scale = imageSize.width / width;
-    float retVal = imageSize.height / scale;
+    int halfWidth = width/2;
+    float retVal = width + (arc4random() % halfWidth);
+    retVal = retVal - ((int)retVal % kHeightModule);
     return retVal;
 }
 

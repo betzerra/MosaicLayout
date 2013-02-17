@@ -7,6 +7,7 @@
 //
 
 #import "MosaicCell.h"
+#import "AFNetworking.h"
 
 @implementation MosaicCell
 
@@ -15,16 +16,8 @@
 #pragma mark - Private
 
 -(void)setup{    
-    float randomRed = arc4random() % 255 / 255.0;
-    float randomGreen = arc4random() % 255 / 255.0;
-    float randomBlue = arc4random() % 255 / 255.0;
-    
     imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    imageView.backgroundColor = [UIColor colorWithRed:randomRed
-                                                green:randomGreen
-                                                 blue:randomBlue
-                                                alpha:1.0];
     [self addSubview:imageView];
 }
 
@@ -69,6 +62,32 @@
     [self cropImage];
 }
 
+-(MosaicData *)mosaicData{
+    return mosaicData;
+}
+
+-(void)setMosaicData:(MosaicData *)newMosaicData{
+
+    mosaicData = newMosaicData;
+    
+    if ([mosaicData.imageFilename hasPrefix:@"http://"] ||
+        [mosaicData.imageFilename hasPrefix:@"https://"]){
+        //  Download image from the web
+        void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
+            self.image = downloadedImage;
+        };
+        
+        NSURL *anURL = [NSURL URLWithString:mosaicData.imageFilename];
+        NSURLRequest *anURLRequest = [NSURLRequest requestWithURL:anURL];
+        AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:anURLRequest
+                                                                                               success:imageSuccess];
+        [operation start];
+    }else{
+        //  Load image from bundle
+        self.image = [UIImage imageNamed:mosaicData.imageFilename];
+    }
+}
+
 #pragma mark - Public
 
 - (id)initWithFrame:(CGRect)frame{
@@ -86,14 +105,5 @@
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

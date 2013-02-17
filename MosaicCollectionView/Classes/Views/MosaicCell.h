@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MosaicData.h"
 
 @interface MosaicCell : UICollectionViewCell{
     UIImageView *imageView;
+    MosaicData *mosaicData;
 }
 
 @property (strong) UIImage *image;
+@property (strong) MosaicData *mosaicData;
 
 @end
