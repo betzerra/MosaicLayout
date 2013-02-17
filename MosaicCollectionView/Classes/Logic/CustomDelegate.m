@@ -30,36 +30,6 @@
     }
 }
 
-#pragma mark - UICollectionViewDataSource
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [elements count];
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"cell";
-    MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    MosaicData *mosaicData = elements[indexPath.row];
-    cell.image = [UIImage imageNamed:mosaicData.imageFilename];
-    return cell;
-}
-
-#pragma mark - UICollectionViewDelegate
-
--(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"#DEBUG Touched %d", indexPath.row);
-}
-
-#pragma mark - MosaicDelegate
-
--(MosaicData *)mosaicDataForIndexPath:(NSIndexPath *)indexPath{
-    return elements[indexPath.row];
-}
-
 #pragma mark - Public
 
 -(id)init{
@@ -68,6 +38,16 @@
         [self loadFromDisk];
     }
     return self;
+}
+
+#pragma mark MosaicDelegate
+
+-(MosaicData *)mosaicDataForIndexPath:(NSIndexPath *)anIndexPath{
+    return elements[anIndexPath.row];
+}
+
+-(NSUInteger)mosaicElementsCount{
+    return [elements count];
 }
 
 @end

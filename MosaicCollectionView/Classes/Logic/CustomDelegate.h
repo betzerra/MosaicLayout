@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MosaicDelegate.h"
 
-@interface CustomDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource, MosaicDelegate>{
+@interface CustomDelegate : NSObject <MosaicDelegate>{
     NSMutableArray *elements;
 }
 

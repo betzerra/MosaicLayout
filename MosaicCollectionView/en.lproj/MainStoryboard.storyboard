@@ -24,10 +24,6 @@
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </collectionViewCell>
                         </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Bgg-gN-w1R" id="Yf9-w9-uVS"/>
-                            <outlet property="delegate" destination="Bgg-gN-w1R" id="PvE-44-g9w"/>
-                        </connections>
                     </collectionView>
                     <connections>
                         <outlet property="mosaicDelegate" destination="Bgg-gN-w1R" id="JSP-G6-QsS"/>

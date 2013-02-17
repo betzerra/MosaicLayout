@@ -10,6 +10,6 @@
 #import "MosaicData.h"
 @protocol MosaicDelegate <NSObject>
 
--(MosaicData *)mosaicDataForIndexPath:(NSIndexPath *)indexPath;
-
+-(MosaicData *)mosaicDataForIndexPath:(NSIndexPath *)anIndexPath;
+-(NSUInteger)mosaicElementsCount;
 @end

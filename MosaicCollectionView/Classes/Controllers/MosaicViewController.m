@@ -8,6 +8,7 @@
 
 #import "MosaicViewController.h"
 #import "MosaicLayout.h"
+#import "MosaicCell.h"
 
 @implementation MosaicViewController
 
@@ -29,6 +30,30 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
     return retVal;
 }
 
+#pragma mark - UICollectionViewDataSource
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [self.mosaicDelegate mosaicElementsCount];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"cell";
+    MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    MosaicData *mosaicData = [self.mosaicDelegate mosaicDataForIndexPath:indexPath];
+    cell.image = [UIImage imageNamed:mosaicData.imageFilename];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"#DEBUG Touched %d", indexPath.row);
+}
+
 #pragma mark - Public
 
 -(float)heightForIndexPath:(NSIndexPath *)indexPath{
@@ -43,6 +68,9 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
     [(MosaicLayout *)self.collectionView.collectionViewLayout setController:self];    
 	// Do any additional setup after loading the view, typically from a nib.
 }
