@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface MosaicView : UICollectionViewController{
+@interface MosaicViewController : UICollectionViewController{
     UIImageView *snapshotBeforeRotation;
     UIImageView *snapshotAfterRotation;
 }

@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Betzerra. All rights reserved.
 //
 
-#import "MosaicView.h"
+#import "MosaicViewController.h"
 #import "MosaicLayout.h"
 
-@implementation MosaicView
+@implementation MosaicViewController
 
 #pragma mark - Private
 
