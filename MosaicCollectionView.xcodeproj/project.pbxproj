@@ -18,7 +18,7 @@
 		678E52AC16D0510100B34D6F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 678E52AB16D0510100B34D6F /* Default-568h@2x.png */; };
 		678E52AF16D0510100B34D6F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678E52AD16D0510100B34D6F /* MainStoryboard.storyboard */; };
 		678E52BA16D0535700B34D6F /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52B916D0535700B34D6F /* MosaicCell.m */; };
-		678E52C016D066BC00B34D6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52BF16D066BC00B34D6F /* ViewController.m */; };
+		678E52C016D066BC00B34D6F /* MosaicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52BF16D066BC00B34D6F /* MosaicView.m */; };
 		678E52C316D066EE00B34D6F /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52C216D066EE00B34D6F /* MosaicLayout.m */; };
 		678E52C516D07A3800B34D6F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678E52C416D07A3800B34D6F /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -40,8 +40,8 @@
 		678E52AE16D0510100B34D6F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		678E52B816D0535700B34D6F /* MosaicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MosaicCell.h; path = Classes/Views/MosaicCell.h; sourceTree = "<group>"; };
 		678E52B916D0535700B34D6F /* MosaicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MosaicCell.m; path = Classes/Views/MosaicCell.m; sourceTree = "<group>"; };
-		678E52BE16D066BC00B34D6F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		678E52BF16D066BC00B34D6F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		678E52BE16D066BC00B34D6F /* MosaicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicView.h; sourceTree = "<group>"; };
+		678E52BF16D066BC00B34D6F /* MosaicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicView.m; sourceTree = "<group>"; };
 		678E52C116D066EE00B34D6F /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		678E52C216D066EE00B34D6F /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
 		678E52C416D07A3800B34D6F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -137,8 +137,8 @@
 		678E52BD16D066BC00B34D6F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				678E52BE16D066BC00B34D6F /* ViewController.h */,
-				678E52BF16D066BC00B34D6F /* ViewController.m */,
+				678E52BE16D066BC00B34D6F /* MosaicView.h */,
+				678E52BF16D066BC00B34D6F /* MosaicView.m */,
 				678E52C116D066EE00B34D6F /* MosaicLayout.h */,
 				678E52C216D066EE00B34D6F /* MosaicLayout.m */,
 			);
@@ -215,7 +215,7 @@
 				678E52A216D0510100B34D6F /* main.m in Sources */,
 				678E52A616D0510100B34D6F /* AppDelegate.m in Sources */,
 				678E52BA16D0535700B34D6F /* MosaicCell.m in Sources */,
-				678E52C016D066BC00B34D6F /* ViewController.m in Sources */,
+				678E52C016D066BC00B34D6F /* MosaicView.m in Sources */,
 				678E52C316D066EE00B34D6F /* MosaicLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
