@@ -12,6 +12,7 @@
 @interface MosaicCell : UICollectionViewCell{
     UIImageView *imageView;
     MosaicData *mosaicData;
+    UILabel *titleLabel;
 }
 
 @property (strong) UIImage *image;

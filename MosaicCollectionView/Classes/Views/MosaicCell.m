@@ -7,7 +7,11 @@
 //
 
 #import "MosaicCell.h"
+#import <QuartzCore/QuartzCore.h>
 #import "AFNetworking.h"
+
+#define kLabelHeight 20
+#define kLabelMargin 10
 
 @implementation MosaicCell
 
@@ -15,10 +19,27 @@
 
 #pragma mark - Private
 
--(void)setup{    
+-(void)setup{
+    //  Set image view
     imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:imageView];
+    
+    //  Added black stroke
+    self.layer.borderWidth = 1;
+    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.clipsToBounds = YES;
+    
+    //  UILabel for title    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.textAlignment = NSTextAlignmentRight;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.shadowColor = [UIColor blackColor];
+    titleLabel.shadowOffset = CGSizeMake(0, 1);
+    titleLabel.numberOfLines = 1;
+    [self addSubview:titleLabel];
 }
 
 -(void)cropImage{
@@ -75,6 +96,8 @@
 
     mosaicData = newMosaicData;
     
+    
+    //  Image set
     if ([mosaicData.imageFilename hasPrefix:@"http://"] ||
         [mosaicData.imageFilename hasPrefix:@"https://"]){
         //  Download image from the web
@@ -91,6 +114,10 @@
         //  Load image from bundle
         self.image = [UIImage imageNamed:mosaicData.imageFilename];
     }
+    
+    
+    //  Title set
+    titleLabel.text = mosaicData.title;
 }
 
 #pragma mark - Public
@@ -113,6 +140,12 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
+    
+    titleLabel.frame = CGRectMake(kLabelMargin,
+                                  self.bounds.size.height - kLabelHeight - kLabelMargin,
+                                  self.bounds.size.width - kLabelMargin * 2,
+                                  kLabelHeight);
+    
     [self cropImage];
 }
 
