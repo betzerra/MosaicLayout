@@ -70,7 +70,7 @@
             }
         }
         imageView.frame = CGRectMake(0, 0, imgFinalSize.width, imgFinalSize.height);
-        imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);        
+        imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
 }
 
@@ -82,6 +82,9 @@
 
 -(void)setImage:(UIImage *)newImage{
     imageView.image = newImage;
+    
+    [self cropImage];
+    
     imageView.alpha = 0.0;
     [UIView animateWithDuration:0.3 animations:^{
         imageView.alpha = 1.0;

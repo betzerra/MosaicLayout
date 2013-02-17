@@ -10,7 +10,7 @@
 #import "MosaicLayout.h"
 #import "MosaicCell.h"
 
-#define kHeightModule 20
+#define kHeightModule 40
 
 @implementation MosaicViewController
 

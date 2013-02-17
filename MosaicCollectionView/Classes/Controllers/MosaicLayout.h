@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MosaicViewController.h"
 
-#define kColumnsQuantity 3
+#define kColumnsQuantity 4
 
 @interface MosaicLayout : UICollectionViewLayout{
     NSMutableArray *columns;

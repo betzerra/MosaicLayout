@@ -8,6 +8,8 @@
 
 #import "MosaicLayout.h"
 
+#define kDoubleColumnProbability 40
+
 @implementation MosaicLayout
 
 #pragma mark - Private
@@ -42,6 +44,24 @@
     return retVal;
 }
 
+-(BOOL)canUseDoubleColumnOnIndex:(NSUInteger)columnIndex{
+    BOOL retVal = NO;
+
+    if (columnIndex < kColumnsQuantity-1){
+        float firstColumnHeight = [columns[columnIndex] floatValue];
+        float secondColumnHeight = [columns[columnIndex+1] floatValue];
+        
+        if (firstColumnHeight == secondColumnHeight){
+            NSUInteger random = arc4random() % 100;
+            if (random < kDoubleColumnProbability){
+                retVal = YES;
+            }
+        }
+    }
+    
+    return retVal;
+}
+
 #pragma mark - Public
 
 -(float)columnWidth{
@@ -71,17 +91,30 @@
         NSUInteger columnIndex = [self shortestColumnIndex];
         NSUInteger xOffset = columnIndex * [self columnWidth];
         NSUInteger yOffset = [[columns objectAtIndex:columnIndex] integerValue];
-        NSUInteger itemWidth = [self columnWidth];
-        NSUInteger itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth];
+
+        NSUInteger itemWidth = 0;
+        NSUInteger itemHeight = 0;
+        if ([self canUseDoubleColumnOnIndex:columnIndex]){
+            itemWidth = [self columnWidth] * 2;
+            itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth];
+            
+            //  Set column height
+            columns[columnIndex] = @(yOffset + itemHeight);
+            columns[columnIndex+1] = @(yOffset + itemHeight);
+
+        }else{
+            itemWidth = [self columnWidth];
+            itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth];
+            
+            //  Set column height
+            columns[columnIndex] = @(yOffset + itemHeight);
+        }
         
         /*  Assign all those values to an UICollectionViewLayoutAttributes instance
          *  and save it on an array */
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         attributes.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
         [itemsAttributes addObject:attributes];
-        
-        //  Set column height
-        columns[columnIndex] = @(yOffset + itemHeight);
     }
 }
 
