@@ -11,5 +11,6 @@
 @protocol MosaicDelegate <NSObject>
 
 -(MosaicData *)mosaicDataForIndexPath:(NSIndexPath *)anIndexPath;
+-(UIImage *)imageForIndexPath:(NSIndexPath *)anIndexPath;
 -(NSUInteger)mosaicElementsCount;
 @end

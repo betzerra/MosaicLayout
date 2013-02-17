@@ -50,4 +50,10 @@
     return [elements count];
 }
 
+-(UIImage *)imageForIndexPath:(NSIndexPath *)anIndexPath{
+    MosaicData *mosaicData = [self mosaicDataForIndexPath:anIndexPath];
+    UIImage *retVal = [UIImage imageNamed:mosaicData.imageFilename];
+    return retVal;
+}
+
 @end

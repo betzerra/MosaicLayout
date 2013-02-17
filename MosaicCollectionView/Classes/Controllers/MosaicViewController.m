@@ -43,8 +43,7 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cell";
     MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    MosaicData *mosaicData = [self.mosaicDelegate mosaicDataForIndexPath:indexPath];
-    cell.image = [UIImage imageNamed:mosaicData.imageFilename];
+    cell.image = [self.mosaicDelegate imageForIndexPath:indexPath];
     return cell;
 }
 
@@ -58,8 +57,7 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 
 -(float)heightForIndexPath:(NSIndexPath *)indexPath{
     float columnWidth = [(MosaicLayout *)self.collectionView.collectionViewLayout columnWidth];
-    MosaicData *element = [self.mosaicDelegate mosaicDataForIndexPath:indexPath];
-    CGSize imageSize = [[UIImage imageNamed:element.imageFilename] size];
+    CGSize imageSize = [[self.mosaicDelegate imageForIndexPath:indexPath] size];
     
     float scale = imageSize.width / columnWidth;
     float retVal = imageSize.height / scale;
