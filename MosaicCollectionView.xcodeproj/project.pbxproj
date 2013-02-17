@@ -32,15 +32,6 @@
 		678E52C516D07A3800B34D6F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678E52C416D07A3800B34D6F /* QuartzCore.framework */; };
 		678E52CA16D07E8000B34D6F /* CustomDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52C916D07E8000B34D6F /* CustomDelegate.m */; };
 		678E52D316D089D800B34D6F /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52D216D089D800B34D6F /* MosaicData.m */; };
-		678E52E016D08A4000B34D6F /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52D616D08A4000B34D6F /* 001.jpg */; };
-		678E52E116D08A4000B34D6F /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52D716D08A4000B34D6F /* 002.jpg */; };
-		678E52E216D08A4000B34D6F /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52D816D08A4000B34D6F /* 003.jpg */; };
-		678E52E316D08A4000B34D6F /* 004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52D916D08A4000B34D6F /* 004.jpg */; };
-		678E52E416D08A4000B34D6F /* 005.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DA16D08A4000B34D6F /* 005.jpg */; };
-		678E52E516D08A4000B34D6F /* 006.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DB16D08A4000B34D6F /* 006.jpg */; };
-		678E52E616D08A4000B34D6F /* 007.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DC16D08A4000B34D6F /* 007.jpg */; };
-		678E52E716D08A4000B34D6F /* 008.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DD16D08A4000B34D6F /* 008.jpg */; };
-		678E52E816D08A4000B34D6F /* 009.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DE16D08A4000B34D6F /* 009.jpg */; };
 		678E52E916D08A4000B34D6F /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DF16D08A4000B34D6F /* data.json */; };
 /* End PBXBuildFile section */
 
@@ -89,15 +80,6 @@
 		678E52C916D07E8000B34D6F /* CustomDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDelegate.m; path = Classes/Logic/CustomDelegate.m; sourceTree = "<group>"; };
 		678E52D116D089D800B34D6F /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MosaicData.h; path = Classes/Entities/MosaicData.h; sourceTree = "<group>"; };
 		678E52D216D089D800B34D6F /* MosaicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MosaicData.m; path = Classes/Entities/MosaicData.m; sourceTree = "<group>"; };
-		678E52D616D08A4000B34D6F /* 001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 001.jpg; sourceTree = "<group>"; };
-		678E52D716D08A4000B34D6F /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
-		678E52D816D08A4000B34D6F /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
-		678E52D916D08A4000B34D6F /* 004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 004.jpg; sourceTree = "<group>"; };
-		678E52DA16D08A4000B34D6F /* 005.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 005.jpg; sourceTree = "<group>"; };
-		678E52DB16D08A4000B34D6F /* 006.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 006.jpg; sourceTree = "<group>"; };
-		678E52DC16D08A4000B34D6F /* 007.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 007.jpg; sourceTree = "<group>"; };
-		678E52DD16D08A4000B34D6F /* 008.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 008.jpg; sourceTree = "<group>"; };
-		678E52DE16D08A4000B34D6F /* 009.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 009.jpg; sourceTree = "<group>"; };
 		678E52DF16D08A4000B34D6F /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		678E52EA16D08D0400B34D6F /* MosaicDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MosaicDelegate.h; path = MosaicCollectionView/Classes/Protocols/MosaicDelegate.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -252,7 +234,6 @@
 		678E52CC16D081CB00B34D6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				678E52D516D08A4000B34D6F /* Assets */,
 				678E52DF16D08A4000B34D6F /* data.json */,
 			);
 			path = Resources;
@@ -265,22 +246,6 @@
 				678E52D216D089D800B34D6F /* MosaicData.m */,
 			);
 			name = Entities;
-			sourceTree = "<group>";
-		};
-		678E52D516D08A4000B34D6F /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				678E52D616D08A4000B34D6F /* 001.jpg */,
-				678E52D716D08A4000B34D6F /* 002.jpg */,
-				678E52D816D08A4000B34D6F /* 003.jpg */,
-				678E52D916D08A4000B34D6F /* 004.jpg */,
-				678E52DA16D08A4000B34D6F /* 005.jpg */,
-				678E52DB16D08A4000B34D6F /* 006.jpg */,
-				678E52DC16D08A4000B34D6F /* 007.jpg */,
-				678E52DD16D08A4000B34D6F /* 008.jpg */,
-				678E52DE16D08A4000B34D6F /* 009.jpg */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		678E52EB16D08D0A00B34D6F /* Protocols */ = {
@@ -348,15 +313,6 @@
 				678E52AA16D0510100B34D6F /* Default@2x.png in Resources */,
 				678E52AC16D0510100B34D6F /* Default-568h@2x.png in Resources */,
 				678E52AF16D0510100B34D6F /* MainStoryboard.storyboard in Resources */,
-				678E52E016D08A4000B34D6F /* 001.jpg in Resources */,
-				678E52E116D08A4000B34D6F /* 002.jpg in Resources */,
-				678E52E216D08A4000B34D6F /* 003.jpg in Resources */,
-				678E52E316D08A4000B34D6F /* 004.jpg in Resources */,
-				678E52E416D08A4000B34D6F /* 005.jpg in Resources */,
-				678E52E516D08A4000B34D6F /* 006.jpg in Resources */,
-				678E52E616D08A4000B34D6F /* 007.jpg in Resources */,
-				678E52E716D08A4000B34D6F /* 008.jpg in Resources */,
-				678E52E816D08A4000B34D6F /* 009.jpg in Resources */,
 				678E52E916D08A4000B34D6F /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
