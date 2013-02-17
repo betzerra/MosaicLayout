@@ -55,11 +55,10 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 
 #pragma mark - Public
 
--(float)heightForIndexPath:(NSIndexPath *)indexPath{
-    float columnWidth = [(MosaicLayout *)self.collectionView.collectionViewLayout columnWidth];
+-(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width{
     CGSize imageSize = [[self.mosaicDelegate imageForIndexPath:indexPath] size];
     
-    float scale = imageSize.width / columnWidth;
+    float scale = imageSize.width / width;
     float retVal = imageSize.height / scale;
     return retVal;
 }

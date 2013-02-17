@@ -15,7 +15,7 @@
     UIImageView *snapshotAfterRotation;
 }
 
--(float)heightForIndexPath:(NSIndexPath *)indexPath;
+-(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width;
 
 @property (weak) IBOutlet id <MosaicDelegate> mosaicDelegate;
 

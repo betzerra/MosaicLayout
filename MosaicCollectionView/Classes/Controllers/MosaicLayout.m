@@ -71,12 +71,13 @@
         NSUInteger columnIndex = [self shortestColumnIndex];
         NSUInteger xOffset = columnIndex * [self columnWidth];
         NSUInteger yOffset = [[columns objectAtIndex:columnIndex] integerValue];
-        NSUInteger itemHeight = [self.controller heightForIndexPath:indexPath];
+        NSUInteger itemWidth = [self columnWidth];
+        NSUInteger itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth];
         
         /*  Assign all those values to an UICollectionViewLayoutAttributes instance
          *  and save it on an array */
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-        attributes.frame = CGRectMake(xOffset, yOffset, [self columnWidth], itemHeight);
+        attributes.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
         [itemsAttributes addObject:attributes];
         
         //  Set column height
