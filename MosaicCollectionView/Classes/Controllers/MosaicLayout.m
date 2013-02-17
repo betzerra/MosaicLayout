@@ -96,7 +96,7 @@
         NSUInteger itemHeight = 0;
         if ([self canUseDoubleColumnOnIndex:columnIndex]){
             itemWidth = [self columnWidth] * 2;
-            itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth];
+            itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth*0.75];
             
             //  Set column height
             columns[columnIndex] = @(yOffset + itemHeight);
