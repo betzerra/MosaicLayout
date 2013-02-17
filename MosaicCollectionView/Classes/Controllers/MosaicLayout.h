@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MosaicLayout.h
 //  MosaicCollectionView
 //
 //  Created by Ezequiel A Becerra on 2/16/13.
@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MosaicLayout : UICollectionViewLayout{
+    NSMutableArray *columns;
+    NSMutableArray *itemsAttributes;
+}
 
 @end
