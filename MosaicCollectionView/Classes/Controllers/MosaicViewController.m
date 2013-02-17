@@ -91,11 +91,11 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 }
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-    snapshotAfterRotation = captureSnapshotOfView(self.collectionView);
-    
     snapshotBeforeRotation.alpha = 0.0;
+
+    snapshotAfterRotation = captureSnapshotOfView(self.collectionView);
     [self.view insertSubview:snapshotAfterRotation belowSubview:snapshotBeforeRotation];
-    self.collectionView.hidden = YES;
+    self.collectionView.alpha = YES;
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
