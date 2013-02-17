@@ -92,6 +92,14 @@
     return mosaicData;
 }
 
+-(void)setHighlighted:(BOOL)highlighted{
+    [super setHighlighted:highlighted];
+    imageView.alpha = 0.0;
+    [UIView animateWithDuration:0.3 animations:^{
+        imageView.alpha = 1.0;
+    }];
+}
+
 -(void)setMosaicData:(MosaicData *)newMosaicData{
 
     mosaicData = newMosaicData;
