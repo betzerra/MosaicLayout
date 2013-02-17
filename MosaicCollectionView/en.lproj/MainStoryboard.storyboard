@@ -25,28 +25,44 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="RRX-FU-Qcq" id="wNI-yg-cRr"/>
-                            <outlet property="delegate" destination="RRX-FU-Qcq" id="VAR-xV-AeM"/>
+                            <outlet property="dataSource" destination="Bgg-gN-w1R" id="Yf9-w9-uVS"/>
+                            <outlet property="delegate" destination="Bgg-gN-w1R" id="PvE-44-g9w"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <outlet property="mosaicDelegate" destination="Bgg-gN-w1R" id="JSP-G6-QsS"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hjM-sG-7px" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Bgg-gN-w1R" customClass="CustomDelegate"/>
             </objects>
             <point key="canvasLocation" x="29" y="63"/>
         </scene>
     </scenes>
     <classes>
+        <class className="CustomDelegate" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomDelegate.h"/>
+        </class>
         <class className="MosaicCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MosaicCell.h"/>
         </class>
         <class className="MosaicLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MosaicLayout.h"/>
         </class>
+        <class className="MosaicViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MosaicViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mosaicDelegate"/>
+            </relationships>
+        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
         <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
         </class>
         <class className="UICollectionViewLayout" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>

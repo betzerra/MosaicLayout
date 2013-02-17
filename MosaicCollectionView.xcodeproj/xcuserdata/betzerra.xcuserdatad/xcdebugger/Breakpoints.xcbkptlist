@@ -8,90 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382760506.046532"
+         timestampString = "382765020.488112"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
-         landmarkName = "-longestColumnIndex"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382760506.046532"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
-         landmarkName = "-columnWidth"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382761559.188311"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
-         landmarkName = "-prepareLayout"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382761559.188311"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
-         landmarkName = "-layoutAttributesForElementsInRect:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382760506.046532"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "-shortestColumnIndex"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382761559.188311"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
-         landmarkName = "-prepareLayout"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MosaicCollectionView/Classes/Controllers/MosaicLayout.m"
-         timestampString = "382761559.188311"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "108"
-         endingLineNumber = "108"
-         landmarkName = "-collectionViewContentSize"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

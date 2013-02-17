@@ -8,11 +8,6 @@
 
 #import "MosaicLayout.h"
 
-#define kColumnsQuantity 3
-
-//  #TEMP
-#define kItemHeight arc4random() % 200 + 100
-
 @implementation MosaicLayout
 
 #pragma mark - Private
@@ -47,13 +42,14 @@
     return retVal;
 }
 
+#pragma mark - Public
+
 -(float)columnWidth{
     float retVal = self.collectionView.bounds.size.width / kColumnsQuantity;
     retVal = roundf(retVal);
     return retVal;
 }
 
-#pragma mark - Public
 #pragma mark UICollectionViewLayout
 
 -(void)prepareLayout{
@@ -75,7 +71,7 @@
         NSUInteger columnIndex = [self shortestColumnIndex];
         NSUInteger xOffset = columnIndex * [self columnWidth];
         NSUInteger yOffset = [[columns objectAtIndex:columnIndex] integerValue];
-        NSUInteger itemHeight = kItemHeight;
+        NSUInteger itemHeight = [self.controller heightForIndexPath:indexPath];
         
         /*  Assign all those values to an UICollectionViewLayoutAttributes instance
          *  and save it on an array */

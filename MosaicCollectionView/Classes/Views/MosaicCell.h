@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MosaicCell : UICollectionViewCell
+@interface MosaicCell : UICollectionViewCell{
+    UIImageView *imageView;
+}
+
+@property (strong) UIImage *image;
 
 @end

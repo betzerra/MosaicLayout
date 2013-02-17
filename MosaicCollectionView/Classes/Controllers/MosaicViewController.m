@@ -31,22 +31,19 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 
 #pragma mark - Public
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"cell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    return cell;
+-(float)heightForIndexPath:(NSIndexPath *)indexPath{
+    float columnWidth = [(MosaicLayout *)self.collectionView.collectionViewLayout columnWidth];
+    MosaicData *element = [self.mosaicDelegate mosaicDataForIndexPath:indexPath];
+    CGSize imageSize = [[UIImage imageNamed:element.imageFilename] size];
+    
+    float scale = imageSize.width / columnWidth;
+    float retVal = imageSize.height / scale;
+    return retVal;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [(MosaicLayout *)self.collectionView.collectionViewLayout setController:self];    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

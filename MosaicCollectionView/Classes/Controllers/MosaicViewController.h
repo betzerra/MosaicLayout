@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "MosaicDelegate.h"
 
 @interface MosaicViewController : UICollectionViewController{
     UIImageView *snapshotBeforeRotation;
     UIImageView *snapshotAfterRotation;
 }
+
+-(float)heightForIndexPath:(NSIndexPath *)indexPath;
+
+@property (weak) IBOutlet id <MosaicDelegate> mosaicDelegate;
 
 @end
