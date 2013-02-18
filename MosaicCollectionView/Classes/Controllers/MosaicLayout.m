@@ -47,7 +47,7 @@
 -(BOOL)canUseDoubleColumnOnIndex:(NSUInteger)columnIndex{
     BOOL retVal = NO;
 
-    if (columnIndex < kColumnsQuantity-1){
+    if (columnIndex < self.columnsQuantity-1){
         float firstColumnHeight = [columns[columnIndex] floatValue];
         float secondColumnHeight = [columns[columnIndex+1] floatValue];
         
@@ -65,7 +65,7 @@
 #pragma mark - Public
 
 -(float)columnWidth{
-    float retVal = self.collectionView.bounds.size.width / kColumnsQuantity;
+    float retVal = self.collectionView.bounds.size.width / self.columnsQuantity;
     retVal = roundf(retVal);
     return retVal;
 }
@@ -75,8 +75,8 @@
 -(void)prepareLayout{
     
     //  Set all column heights to 0
-    columns = [NSMutableArray arrayWithCapacity:kColumnsQuantity];
-    for (NSInteger i = 0; i < kColumnsQuantity; i++) {
+    columns = [NSMutableArray arrayWithCapacity:self.columnsQuantity];
+    for (NSInteger i = 0; i < self.columnsQuantity; i++) {
         [columns addObject:@(0)];
     }
     

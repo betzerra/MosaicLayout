@@ -32,6 +32,29 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
     return retVal;
 }
 
+-(void)updateColumnsQuantityToInterfaceOrientation:(UIInterfaceOrientation)anOrientation{
+    //  Set the quantity of columns according of the device and interface orientation
+    NSUInteger columns = 0;
+    if (UIInterfaceOrientationIsLandscape(anOrientation)){
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            columns = kColumnsiPadLandscape;
+        }else{
+            columns = kColumnsiPhoneLandscape;
+        }
+        
+    }else{
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            columns = kColumnsiPadPortrait;
+        }else{
+            columns = kColumnsiPhonePortrait;
+        }
+    }
+    
+    [(MosaicLayout *)self.collectionView.collectionViewLayout setColumnsQuantity:columns];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -72,6 +95,7 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
+    [self updateColumnsQuantityToInterfaceOrientation:self.interfaceOrientation];
     [(MosaicLayout *)self.collectionView.collectionViewLayout setController:self];    
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -86,6 +110,7 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
     snapshotBeforeRotation = captureSnapshotOfView(self.collectionView);
     [self.view insertSubview:snapshotBeforeRotation aboveSubview:self.collectionView];
     
+    [self updateColumnsQuantityToInterfaceOrientation:toInterfaceOrientation];
     MosaicLayout *layout = (MosaicLayout *)self.collectionView.collectionViewLayout;
     [layout invalidateLayout];
 }

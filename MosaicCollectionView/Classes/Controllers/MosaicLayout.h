@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MosaicViewController.h"
 
-#define kColumnsQuantity 4
-
 @interface MosaicLayout : UICollectionViewLayout{
     NSMutableArray *columns;
     NSMutableArray *itemsAttributes;
 }
 
 @property (weak) MosaicViewController *controller;
+@property (assign) NSUInteger columnsQuantity;
 
 -(float)columnWidth;
 
