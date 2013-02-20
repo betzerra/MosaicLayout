@@ -88,7 +88,7 @@
     imageView.alpha = 0.0;
     
     //  Random delay to avoid all animations happen at once
-    float millisecondsDelay = (arc4random() % 1500) / 1000.0f;
+    float millisecondsDelay = (arc4random() % 700) / 1000.0f;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, millisecondsDelay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.3 animations:^{
