@@ -10,8 +10,6 @@
 #import "MosaicLayout.h"
 #import "MosaicCell.h"
 
-#define kHeightModule 40
-
 @implementation MosaicViewController
 
 #pragma mark - Private
@@ -63,12 +61,7 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 
 #pragma mark - Public
 
--(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width{
-    int halfWidth = width/2;
-    float retVal = width + (arc4random() % halfWidth);
-    retVal = retVal - ((int)retVal % kHeightModule);
-    return retVal;
-}
+
 
 - (void)viewDidLoad{
     [super viewDidLoad];

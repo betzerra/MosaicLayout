@@ -19,6 +19,4 @@
     UIImageView *snapshotAfterRotation;
 }
 
--(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width;
-
 @end

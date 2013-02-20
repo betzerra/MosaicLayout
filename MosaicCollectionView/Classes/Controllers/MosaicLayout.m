@@ -9,6 +9,7 @@
 #import "MosaicLayout.h"
 
 #define kDoubleColumnProbability 40
+#define kHeightModule 40
 
 @implementation MosaicLayout
 
@@ -62,6 +63,13 @@
     return retVal;
 }
 
+-(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width{
+    int halfWidth = width/2;
+    float retVal = width + (arc4random() % halfWidth);
+    retVal = retVal - ((int)retVal % kHeightModule);
+    return retVal;
+}
+
 #pragma mark - Public
 
 -(float)columnWidth{
@@ -96,7 +104,7 @@
         NSUInteger itemHeight = 0;
         if ([self canUseDoubleColumnOnIndex:columnIndex]){
             itemWidth = [self columnWidth] * 2;
-            itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth*0.75];
+            itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth*0.75];
             
             //  Set column height
             columns[columnIndex] = @(yOffset + itemHeight);
@@ -104,7 +112,7 @@
 
         }else{
             itemWidth = [self columnWidth];
-            itemHeight = [self.controller heightForIndexPath:indexPath withWidth:itemWidth];
+            itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth];
             
             //  Set column height
             columns[columnIndex] = @(yOffset + itemHeight);
