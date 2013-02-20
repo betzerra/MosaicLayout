@@ -24,20 +24,20 @@
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </collectionViewCell>
                         </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Bgg-gN-w1R" id="8gF-vP-0F4"/>
+                        </connections>
                     </collectionView>
-                    <connections>
-                        <outlet property="mosaicDelegate" destination="Bgg-gN-w1R" id="JSP-G6-QsS"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hjM-sG-7px" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="Bgg-gN-w1R" customClass="CustomDelegate"/>
+                <customObject id="Bgg-gN-w1R" customClass="CustomDataSource"/>
             </objects>
             <point key="canvasLocation" x="29" y="63"/>
         </scene>
     </scenes>
     <classes>
-        <class className="CustomDelegate" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomDelegate.h"/>
+        <class className="CustomDataSource" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomDataSource.h"/>
         </class>
         <class className="MosaicCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MosaicCell.h"/>
@@ -47,9 +47,6 @@
         </class>
         <class className="MosaicViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MosaicViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mosaicDelegate"/>
-            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>

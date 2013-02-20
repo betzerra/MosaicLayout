@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "MosaicDelegate.h"
 
 #define kColumnsiPadLandscape 5
 #define kColumnsiPadPortrait 4
@@ -21,7 +20,5 @@
 }
 
 -(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width;
-
-@property (weak) IBOutlet id <MosaicDelegate> mosaicDelegate;
 
 @end

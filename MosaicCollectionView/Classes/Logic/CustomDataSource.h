@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MosaicDelegate.h"
 
-@interface CustomDelegate : NSObject <MosaicDelegate>{
+@interface CustomDataSource : NSObject <UICollectionViewDataSource>{
     NSMutableArray *elements;
 }
 

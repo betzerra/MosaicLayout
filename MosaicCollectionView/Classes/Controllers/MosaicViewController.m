@@ -55,26 +55,6 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
     [(MosaicLayout *)self.collectionView.collectionViewLayout setColumnsQuantity:columns];
 }
 
-#pragma mark - UICollectionViewDataSource
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.mosaicDelegate mosaicElementsCount];
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"cell";
-    MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.mosaicData = [self.mosaicDelegate mosaicDataForIndexPath:indexPath];
-    
-    float randomWhite = (arc4random() % 40 + 10) / 255.0;
-    cell.backgroundColor = [UIColor colorWithWhite:randomWhite alpha:1];
-    return cell;
-}
-
 #pragma mark - UICollectionViewDelegate
 
 -(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -93,7 +73,6 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
     
     [self updateColumnsQuantityToInterfaceOrientation:self.interfaceOrientation];
     [(MosaicLayout *)self.collectionView.collectionViewLayout setController:self];    

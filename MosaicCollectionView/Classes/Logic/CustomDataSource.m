@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Betzerra. All rights reserved.
 //
 
-#import "CustomDelegate.h"
+#import "CustomDataSource.h"
 #import "MosaicData.h"
 #import "MosaicCell.h"
 
-@implementation CustomDelegate
+@implementation CustomDataSource
 
 #pragma mark - Private
 -(void)loadFromDisk{
@@ -40,20 +40,24 @@
     return self;
 }
 
-#pragma mark MosaicDelegate
+#pragma mark - UICollectionViewDataSource
 
--(MosaicData *)mosaicDataForIndexPath:(NSIndexPath *)anIndexPath{
-    return elements[anIndexPath.row];
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
 }
 
--(NSUInteger)mosaicElementsCount{
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [elements count];
 }
 
--(UIImage *)imageForIndexPath:(NSIndexPath *)anIndexPath{
-    MosaicData *mosaicData = [self mosaicDataForIndexPath:anIndexPath];
-    UIImage *retVal = [UIImage imageNamed:mosaicData.imageFilename];
-    return retVal;
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"cell";
+    MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.mosaicData = elements[indexPath.row];
+    
+    float randomWhite = (arc4random() % 40 + 10) / 255.0;
+    cell.backgroundColor = [UIColor colorWithWhite:randomWhite alpha:1];
+    return cell;
 }
 
 @end
