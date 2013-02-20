@@ -19,4 +19,7 @@
     UIImageView *snapshotAfterRotation;
 }
 
+@property (weak) IBOutlet id <MosaicDelegate> mosaicDelegate;
+@property (nonatomic, strong) NSOperationQueue *thumbnailQueue;
+
 @end
