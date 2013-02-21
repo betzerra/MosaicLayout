@@ -120,7 +120,11 @@
         [mosaicData.imageFilename hasPrefix:@"https://"]){
         //  Download image from the web
         void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
-            self.image = downloadedImage;
+            
+            //  This check is to avoid wrong images on reused cells
+            if ([newMosaicData.title isEqualToString:mosaicData.title]){
+                self.image = downloadedImage;
+            }
         };
         
         NSURL *anURL = [NSURL URLWithString:mosaicData.imageFilename];
