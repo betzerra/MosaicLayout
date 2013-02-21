@@ -12,4 +12,7 @@
     NSMutableArray *elements;
 }
 
+@property (weak) UICollectionView *collectionView;
+@property (nonatomic, strong) NSOperationQueue *thumbnailQueue;
+
 @end
