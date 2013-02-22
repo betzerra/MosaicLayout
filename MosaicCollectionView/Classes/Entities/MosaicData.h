@@ -14,4 +14,5 @@
 
 @property (strong) NSString *imageFilename;
 @property (strong) NSString *title;
+@property (assign) BOOL firstTimeShown;
 @end

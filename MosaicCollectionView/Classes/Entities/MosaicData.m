@@ -16,6 +16,7 @@
     if (self){
         self.imageFilename = [aDict objectForKey:@"imageFilename"];
         self.title = [aDict objectForKey:@"title"];
+        self.firstTimeShown = YES;
     }
     return self;
 }
