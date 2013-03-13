@@ -106,12 +106,16 @@
 }
 
 -(void)setHighlighted:(BOOL)highlighted{
-    [super setHighlighted:highlighted];
     
-    imageView.alpha = 0.0;
-    [UIView animateWithDuration:0.3 animations:^{
-        imageView.alpha = 1.0;
-    }];
+    //  This avoids the animation runs every time the cell is reused
+    if (self.isHighlighted != highlighted){
+        imageView.alpha = 0.0;
+        [UIView animateWithDuration:0.3 animations:^{
+            imageView.alpha = 1.0;
+        }];        
+    }
+    
+    [super setHighlighted:highlighted];    
 }
 
 -(void)setMosaicData:(MosaicData *)newMosaicData{
