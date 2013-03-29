@@ -11,6 +11,13 @@
 #define kDoubleColumnProbability 40
 #define kHeightModule 40
 
+@interface MosaicLayout()
+-(NSUInteger)shortestColumnIndex;
+-(NSUInteger)longestColumnIndex;
+-(BOOL)canUseDoubleColumnOnIndex:(NSUInteger)columnIndex;
+-(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width;
+@end
+
 @implementation MosaicLayout
 
 #pragma mark - Private

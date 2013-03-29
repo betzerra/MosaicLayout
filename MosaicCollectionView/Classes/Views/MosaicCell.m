@@ -13,6 +13,11 @@
 #define kLabelHeight 20
 #define kLabelMargin 10
 
+@interface MosaicCell()
+-(void)setup;
+-(void)cropImage;
+@end
+
 @implementation MosaicCell
 
 @synthesize image;

@@ -11,6 +11,10 @@
 #import "MosaicCell.h"
 #import "CustomDataSource.h"
 
+@interface MosaicViewController()
+-(void)updateColumnsQuantityToInterfaceOrientation:(UIInterfaceOrientation)anOrientation;
+@end
+
 @implementation MosaicViewController
 
 #pragma mark - Private
@@ -78,9 +82,13 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    //  Taking a snapshot of the view before rotation to make a smooth transition on rotations
     snapshotBeforeRotation = captureSnapshotOfView(self.collectionView);
     [self.view insertSubview:snapshotBeforeRotation aboveSubview:self.collectionView];
     
+    /*  Update columns when the device change from portrait to landscape or viceversa.
+     *  After setting the columns to MosaicLayout, invalidate the layout to get the new
+     *  setup. */
     [self updateColumnsQuantityToInterfaceOrientation:toInterfaceOrientation];
     MosaicLayout *layout = (MosaicLayout *)self.collectionView.collectionViewLayout;
     [layout invalidateLayout];

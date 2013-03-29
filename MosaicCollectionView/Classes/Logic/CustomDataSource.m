@@ -10,6 +10,10 @@
 #import "MosaicData.h"
 #import "MosaicCell.h"
 
+@interface CustomDataSource()
+-(void)loadFromDisk;
+@end
+
 @implementation CustomDataSource
 
 #pragma mark - Private
