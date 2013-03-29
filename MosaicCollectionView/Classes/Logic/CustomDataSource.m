@@ -18,7 +18,7 @@
 
 #pragma mark - Private
 -(void)loadFromDisk{
-    elements = [[NSMutableArray alloc] init];
+    _elements = [[NSMutableArray alloc] init];
     
     NSString *pathString = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
     NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
@@ -30,7 +30,7 @@
     
     for (NSDictionary *aModuleDict in parsedElements){
         MosaicData *aMosaicModule = [[MosaicData alloc] initWithDictionary:aModuleDict];
-        [elements addObject:aMosaicModule];
+        [_elements addObject:aMosaicModule];
     }
 }
 
@@ -54,7 +54,7 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [elements count];
+    return [_elements count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -64,7 +64,7 @@
     // load photo images in the background
     __weak CustomDataSource *weakSelf = self;
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        MosaicData *data = [elements objectAtIndex:indexPath.row];
+        MosaicData *data = [_elements objectAtIndex:indexPath.row];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // then set them via the main queue if the cell is still visible.

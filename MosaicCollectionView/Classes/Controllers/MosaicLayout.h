@@ -10,8 +10,8 @@
 #import "MosaicViewController.h"
 
 @interface MosaicLayout : UICollectionViewLayout{
-    NSMutableArray *columns;
-    NSMutableArray *itemsAttributes;
+    NSMutableArray *_columns;
+    NSMutableArray *_itemsAttributes;
 }
 
 @property (weak) MosaicViewController *controller;

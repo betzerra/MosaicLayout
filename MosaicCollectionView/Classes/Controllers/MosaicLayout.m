@@ -27,7 +27,7 @@
     CGFloat shortestValue = MAXFLOAT;
     
     NSUInteger i=0;
-    for (NSNumber *heightValue in columns){
+    for (NSNumber *heightValue in _columns){
         if ([heightValue floatValue] < shortestValue){
             shortestValue = [heightValue floatValue];
             retVal = i;
@@ -42,7 +42,7 @@
     CGFloat longestValue = 0;
     
     NSUInteger i=0;
-    for (NSNumber *heightValue in columns){
+    for (NSNumber *heightValue in _columns){
         if ([heightValue floatValue] > longestValue){
             longestValue = [heightValue floatValue];
             retVal = i;
@@ -56,8 +56,8 @@
     BOOL retVal = NO;
 
     if (columnIndex < self.columnsQuantity-1){
-        float firstColumnHeight = [columns[columnIndex] floatValue];
-        float secondColumnHeight = [columns[columnIndex+1] floatValue];
+        float firstColumnHeight = [_columns[columnIndex] floatValue];
+        float secondColumnHeight = [_columns[columnIndex+1] floatValue];
         
         if (firstColumnHeight == secondColumnHeight){
             NSUInteger random = arc4random() % 100;
@@ -90,14 +90,14 @@
 -(void)prepareLayout{
     
     //  Set all column heights to 0
-    columns = [NSMutableArray arrayWithCapacity:self.columnsQuantity];
+    _columns = [NSMutableArray arrayWithCapacity:self.columnsQuantity];
     for (NSInteger i = 0; i < self.columnsQuantity; i++) {
-        [columns addObject:@(0)];
+        [_columns addObject:@(0)];
     }
     
     //  Get all the items available for the section
     NSUInteger itemsCount = [[self collectionView] numberOfItemsInSection:0];
-    itemsAttributes = [NSMutableArray arrayWithCapacity:itemsCount];
+    _itemsAttributes = [NSMutableArray arrayWithCapacity:itemsCount];
     
     for (NSUInteger i = 0; i < itemsCount; i++){
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
@@ -105,7 +105,7 @@
         //  Get x, y, width and height for indexPath
         NSUInteger columnIndex = [self shortestColumnIndex];
         NSUInteger xOffset = columnIndex * [self columnWidth];
-        NSUInteger yOffset = [[columns objectAtIndex:columnIndex] integerValue];
+        NSUInteger yOffset = [[_columns objectAtIndex:columnIndex] integerValue];
 
         NSUInteger itemWidth = 0;
         NSUInteger itemHeight = 0;
@@ -114,22 +114,22 @@
             itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth*0.75];
             
             //  Set column height
-            columns[columnIndex] = @(yOffset + itemHeight);
-            columns[columnIndex+1] = @(yOffset + itemHeight);
+            _columns[columnIndex] = @(yOffset + itemHeight);
+            _columns[columnIndex+1] = @(yOffset + itemHeight);
 
         }else{
             itemWidth = [self columnWidth];
             itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth];
             
             //  Set column height
-            columns[columnIndex] = @(yOffset + itemHeight);
+            _columns[columnIndex] = @(yOffset + itemHeight);
         }
         
         /*  Assign all those values to an UICollectionViewLayoutAttributes instance
          *  and save it on an array */
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         attributes.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
-        [itemsAttributes addObject:attributes];
+        [_itemsAttributes addObject:attributes];
     }
 }
 
@@ -139,7 +139,7 @@
         return predicateRetVal;
     }];
     
-    NSArray *retVal = [itemsAttributes filteredArrayUsingPredicate:filterPredicate];
+    NSArray *retVal = [_itemsAttributes filteredArrayUsingPredicate:filterPredicate];
     return retVal;
 }
 
@@ -147,7 +147,7 @@
     CGSize retVal = self.collectionView.bounds.size;
     
     NSUInteger columnIndex = [self longestColumnIndex];
-    float columnHeight = [columns[columnIndex] floatValue];
+    float columnHeight = [_columns[columnIndex] floatValue];
     retVal.height = columnHeight;
     
     return retVal;

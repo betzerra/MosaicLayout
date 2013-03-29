@@ -15,8 +15,8 @@
 #define kColumnsiPhonePortrait 2
 
 @interface MosaicViewController : UICollectionViewController{
-    UIImageView *snapshotBeforeRotation;
-    UIImageView *snapshotAfterRotation;
+    UIImageView *_snapshotBeforeRotation;
+    UIImageView *_snapshotAfterRotation;
 }
 
 @end

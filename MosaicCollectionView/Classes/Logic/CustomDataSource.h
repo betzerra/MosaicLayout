@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CustomDataSource : NSObject <UICollectionViewDataSource>{
-    NSMutableArray *elements;
+    NSMutableArray *_elements;
 }
 
 @property (weak) UICollectionView *collectionView;

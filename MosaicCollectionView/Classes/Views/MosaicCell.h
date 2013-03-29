@@ -10,9 +10,9 @@
 #import "MosaicData.h"
 
 @interface MosaicCell : UICollectionViewCell{
-    UIImageView *imageView;
-    MosaicData *mosaicData;
-    UILabel *titleLabel;
+    UIImageView *_imageView;
+    MosaicData *_mosaicData;
+    UILabel *_titleLabel;
 }
 
 @property (strong) UIImage *image;

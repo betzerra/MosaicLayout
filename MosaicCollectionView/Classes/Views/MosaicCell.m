@@ -26,9 +26,9 @@
 
 -(void)setup{
     //  Set image view
-    imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self addSubview:imageView];
+    _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:_imageView];
     
     //  Added black stroke
     self.layer.borderWidth = 1;
@@ -36,19 +36,19 @@
     self.clipsToBounds = YES;
     
     //  UILabel for title    
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    titleLabel.textAlignment = NSTextAlignmentRight;
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.shadowColor = [UIColor blackColor];
-    titleLabel.shadowOffset = CGSizeMake(0, 1);
-    titleLabel.numberOfLines = 1;
-    [self addSubview:titleLabel];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _titleLabel.textAlignment = NSTextAlignmentRight;
+    _titleLabel.backgroundColor = [UIColor clearColor];
+    _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.shadowColor = [UIColor blackColor];
+    _titleLabel.shadowOffset = CGSizeMake(0, 1);
+    _titleLabel.numberOfLines = 1;
+    [self addSubview:_titleLabel];
 }
 
 -(void)cropImage{
-    UIImage *anImage = imageView.image;
+    UIImage *anImage = _imageView.image;
     
     if (anImage){
         //  Cropping algorithm
@@ -74,49 +74,49 @@
                 imgFinalSize.width = self.bounds.size.width;
             }
         }
-        imageView.frame = CGRectMake(0, 0, imgFinalSize.width, imgFinalSize.height);
-        imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        _imageView.frame = CGRectMake(0, 0, imgFinalSize.width, imgFinalSize.height);
+        _imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
 }
 
 #pragma mark - Properties
 
 -(UIImage *)image{
-    return imageView.image;
+    return _imageView.image;
 }
 
 -(void)setImage:(UIImage *)newImage{
-    imageView.image = newImage;
+    _imageView.image = newImage;
     
     [self cropImage];
     
-    if (mosaicData.firstTimeShown){
-        mosaicData.firstTimeShown = NO;
+    if (_mosaicData.firstTimeShown){
+        _mosaicData.firstTimeShown = NO;
         
-        imageView.alpha = 0.0;
+        _imageView.alpha = 0.0;
         
         //  Random delay to avoid all animations happen at once
         float millisecondsDelay = (arc4random() % 700) / 1000.0f;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, millisecondsDelay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.3 animations:^{
-                imageView.alpha = 1.0;
+                _imageView.alpha = 1.0;
             }];
         });        
     }
 }
 
 -(MosaicData *)mosaicData{
-    return mosaicData;
+    return _mosaicData;
 }
 
 -(void)setHighlighted:(BOOL)highlighted{
     
     //  This avoids the animation runs every time the cell is reused
     if (self.isHighlighted != highlighted){
-        imageView.alpha = 0.0;
+        _imageView.alpha = 0.0;
         [UIView animateWithDuration:0.3 animations:^{
-            imageView.alpha = 1.0;
+            _imageView.alpha = 1.0;
         }];        
     }
     
@@ -125,34 +125,34 @@
 
 -(void)setMosaicData:(MosaicData *)newMosaicData{
 
-    mosaicData = newMosaicData;
+    _mosaicData = newMosaicData;
     
     
     //  Image set
-    if ([mosaicData.imageFilename hasPrefix:@"http://"] ||
-        [mosaicData.imageFilename hasPrefix:@"https://"]){
+    if ([_mosaicData.imageFilename hasPrefix:@"http://"] ||
+        [_mosaicData.imageFilename hasPrefix:@"https://"]){
         //  Download image from the web
         void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
             
             //  This check is to avoid wrong images on reused cells
-            if ([newMosaicData.title isEqualToString:mosaicData.title]){
+            if ([newMosaicData.title isEqualToString:_mosaicData.title]){
                 self.image = downloadedImage;
             }
         };
         
-        NSURL *anURL = [NSURL URLWithString:mosaicData.imageFilename];
+        NSURL *anURL = [NSURL URLWithString:_mosaicData.imageFilename];
         NSURLRequest *anURLRequest = [NSURLRequest requestWithURL:anURL];
         AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:anURLRequest
                                                                                                success:imageSuccess];
         [operation start];
     }else{
         //  Load image from bundle
-        self.image = [UIImage imageNamed:mosaicData.imageFilename];
+        self.image = [UIImage imageNamed:_mosaicData.imageFilename];
     }
     
     
     //  Title set
-    titleLabel.text = mosaicData.title;
+    _titleLabel.text = _mosaicData.title;
 }
 
 #pragma mark - Public
@@ -176,7 +176,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     
-    titleLabel.frame = CGRectMake(kLabelMargin,
+    _titleLabel.frame = CGRectMake(kLabelMargin,
                                   self.bounds.size.height - kLabelHeight - kLabelMargin,
                                   self.bounds.size.width - kLabelMargin * 2,
                                   kLabelHeight);

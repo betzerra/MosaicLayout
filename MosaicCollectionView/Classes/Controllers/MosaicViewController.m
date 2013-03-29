@@ -83,8 +83,8 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     //  Taking a snapshot of the view before rotation to make a smooth transition on rotations
-    snapshotBeforeRotation = captureSnapshotOfView(self.collectionView);
-    [self.view insertSubview:snapshotBeforeRotation aboveSubview:self.collectionView];
+    _snapshotBeforeRotation = captureSnapshotOfView(self.collectionView);
+    [self.view insertSubview:_snapshotBeforeRotation aboveSubview:self.collectionView];
     
     /*  Update columns when the device change from portrait to landscape or viceversa.
      *  After setting the columns to MosaicLayout, invalidate the layout to get the new
@@ -95,18 +95,18 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 }
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-    snapshotBeforeRotation.alpha = 0.0;
+    _snapshotBeforeRotation.alpha = 0.0;
 
-    snapshotAfterRotation = captureSnapshotOfView(self.collectionView);
-    [self.view insertSubview:snapshotAfterRotation belowSubview:snapshotBeforeRotation];
+    _snapshotAfterRotation = captureSnapshotOfView(self.collectionView);
+    [self.view insertSubview:_snapshotAfterRotation belowSubview:_snapshotBeforeRotation];
     self.collectionView.alpha = YES;
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    [snapshotBeforeRotation removeFromSuperview];
-    [snapshotAfterRotation removeFromSuperview];
-    snapshotBeforeRotation = nil;
-    snapshotAfterRotation = nil;
+    [_snapshotBeforeRotation removeFromSuperview];
+    [_snapshotAfterRotation removeFromSuperview];
+    _snapshotBeforeRotation = nil;
+    _snapshotAfterRotation = nil;
     self.collectionView.hidden = NO;
 }
 
