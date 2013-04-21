@@ -14,7 +14,6 @@
     NSMutableArray *_itemsAttributes;
 }
 
-@property (weak) MosaicViewController *controller;
 @property (assign) NSUInteger columnsQuantity;
 
 -(float)columnWidth;
