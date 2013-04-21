@@ -69,10 +69,13 @@ static UIImageView *captureSnapshotOfView(UIView *targetView){
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.collectionView.delegate = self;
+    
+    /*  This is not very cool. We first set the UICollectionView's dataSource and then
+     *  we do the other way around. Doesn't make any sense to set the UICollectionView for the
+     *  datasource */
     [(CustomDataSource *)self.collectionView.dataSource setCollectionView:self.collectionView];
     
     [self updateColumnsQuantityToInterfaceOrientation:self.interfaceOrientation];
-    [(MosaicLayout *)self.collectionView.collectionViewLayout setController:self];    
 }
 
 - (void)didReceiveMemoryWarning{

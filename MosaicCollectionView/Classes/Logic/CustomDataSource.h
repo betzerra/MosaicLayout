@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface CustomDataSource : NSObject <UICollectionViewDataSource>{
-    NSMutableArray *_elements;
 }
 
 @property (weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSOperationQueue *thumbnailQueue;
+@property (readonly) NSMutableArray *elements;
 
 @end

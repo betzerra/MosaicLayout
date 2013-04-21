@@ -33,6 +33,7 @@
 		678E52CA16D07E8000B34D6F /* CustomDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52C916D07E8000B34D6F /* CustomDataSource.m */; };
 		678E52D316D089D800B34D6F /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52D216D089D800B34D6F /* MosaicData.m */; };
 		678E52E916D08A4000B34D6F /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DF16D08A4000B34D6F /* data.json */; };
+		67C93E5317239BC0000CCB83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C93E5217239BC0000CCB83 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,8 @@
 		678E52D116D089D800B34D6F /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MosaicData.h; path = Classes/Entities/MosaicData.h; sourceTree = "<group>"; };
 		678E52D216D089D800B34D6F /* MosaicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MosaicData.m; path = Classes/Entities/MosaicData.m; sourceTree = "<group>"; };
 		678E52DF16D08A4000B34D6F /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		67C93E5117239BC0000CCB83 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		67C93E5217239BC0000CCB83 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +214,8 @@
 		678E52BD16D066BC00B34D6F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				67C93E5117239BC0000CCB83 /* ViewController.h */,
+				67C93E5217239BC0000CCB83 /* ViewController.m */,
 				678E52BE16D066BC00B34D6F /* MosaicViewController.h */,
 				678E52BF16D066BC00B34D6F /* MosaicViewController.m */,
 				678E52C116D066EE00B34D6F /* MosaicLayout.h */,
@@ -329,6 +334,7 @@
 				670F3B7E16D1481300B471D1 /* AFURLConnectionOperation.m in Sources */,
 				670F3B7F16D1481300B471D1 /* AFXMLRequestOperation.m in Sources */,
 				670F3B8016D1481300B471D1 /* UIImageView+AFNetworking.m in Sources */,
+				67C93E5317239BC0000CCB83 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -143,6 +143,11 @@
     return retVal;
 }
 
+-(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewLayoutAttributes *retVal = [_itemsAttributes objectAtIndex:indexPath.row];
+    return retVal;
+}
+
 -(CGSize)collectionViewContentSize{
     CGSize retVal = self.collectionView.bounds.size;
     
