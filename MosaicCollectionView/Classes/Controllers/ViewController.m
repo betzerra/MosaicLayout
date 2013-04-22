@@ -14,42 +14,15 @@
 #define kDoubleColumnProbability 40
 
 @interface ViewController ()
--(void)updateColumnsQuantityToInterfaceOrientation:(UIInterfaceOrientation)anOrientation;
 @end
 
 @implementation ViewController
-
-#pragma mark - Private
-
--(void)updateColumnsQuantityToInterfaceOrientation:(UIInterfaceOrientation)anOrientation{
-    //  Set the quantity of columns according of the device and interface orientation
-    NSUInteger columns = 0;
-    if (UIInterfaceOrientationIsLandscape(anOrientation)){
-        
-        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
-            columns = kColumnsiPadLandscape;
-        }else{
-            columns = kColumnsiPhoneLandscape;
-        }
-        
-    }else{
-        
-        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
-            columns = kColumnsiPadPortrait;
-        }else{
-            columns = kColumnsiPhonePortrait;
-        }
-    }
-    
-    [(MosaicLayout *)_collectionView.collectionViewLayout setColumnsQuantity:columns];
-}
 
 #pragma mark - Public
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     [(MosaicLayout *)_collectionView.collectionViewLayout setDelegate:self];
-    [(MosaicLayout *)_collectionView.collectionViewLayout setColumnsQuantity:3];
     
     /*  This is not very cool. We first set the UICollectionView's dataSource and then
      *  we do the other way around. Doesn't make any sense to set the UICollectionView for the
@@ -77,7 +50,7 @@
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    [self updateColumnsQuantityToInterfaceOrientation:toInterfaceOrientation];
+
     MosaicLayout *layout = (MosaicLayout *)_collectionView.collectionViewLayout;
     [layout invalidateLayout];
 }
@@ -116,6 +89,32 @@
     
     return retVal;
     
+}
+
+-(NSUInteger)numberOfColumnsInCollectionView:(UICollectionView *)collectionView{
+    
+    UIDeviceOrientation anOrientation = [UIDevice currentDevice].orientation;
+    
+    //  Set the quantity of columns according of the device and interface orientation
+    NSUInteger retVal = 0;
+    if (UIInterfaceOrientationIsLandscape(anOrientation)){
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            retVal = kColumnsiPadLandscape;
+        }else{
+            retVal = kColumnsiPhoneLandscape;
+        }
+        
+    }else{
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            retVal = kColumnsiPadPortrait;
+        }else{
+            retVal = kColumnsiPhonePortrait;
+        }
+    }
+    
+    return retVal;
 }
 
 @end

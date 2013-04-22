@@ -14,8 +14,8 @@
     NSMutableArray *_itemsAttributes;
 }
 
-@property (assign) NSUInteger columnsQuantity;
 @property (weak) id <MosaicLayoutDelegate> delegate;
+@property (readonly) NSUInteger columnsQuantity;
 
 -(float)columnWidth;
 

@@ -63,6 +63,13 @@
     return retVal;
 }
 
+#pragma mark - Properties
+
+-(NSUInteger) columnsQuantity{
+    NSUInteger retVal = [self.delegate numberOfColumnsInCollectionView:self.collectionView];
+    return retVal;
+}
+
 #pragma mark - Public
 
 -(float)columnWidth{
@@ -71,7 +78,7 @@
     return retVal;
 }
 
-#pragma mark Public
+#pragma mark UICollectionViewLayout
 
 -(void)prepareLayout{
     
