@@ -15,7 +15,7 @@
  *  Relative height means how tall the cell will be in comparisson with its width.
  *  i.e. if the relative height is 1, the cell is square.
  *  If the relative height is 2, the cell has twice the height than its width. */
--(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath*)indexPath doubleColumn:(BOOL)isDoubleColumn;
+-(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 /*  Returns if the cell at a particular index path can be shown as "double column" 
  *  

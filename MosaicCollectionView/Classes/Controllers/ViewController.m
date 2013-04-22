@@ -52,7 +52,7 @@
 
 #pragma mark - MosaicLayoutDelegate
 
--(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath doubleColumn:(BOOL)isDoubleColumn{
+-(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath{
 
     //  Base relative height for simple layout type. This is 1.0 (height equals to width)
     float retVal = 1.0;
@@ -67,6 +67,7 @@
         
     }else{
         
+        BOOL isDoubleColumn = [self collectionView:collectionView isDoubleColumnAtIndexPath:indexPath];
         if (isDoubleColumn){
             //  Base relative height for double layout type. This is 0.75 (height equals to 75% width)
             retVal = 0.75;

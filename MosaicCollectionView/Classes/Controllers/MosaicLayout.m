@@ -102,35 +102,20 @@
 
         NSUInteger itemWidth = 0;
         NSUInteger itemHeight = 0;
-        float itemRelativeHeight = 0;
-        if ([self canUseDoubleColumnOnIndex:columnIndex]){
+        float itemRelativeHeight = [self.delegate collectionView:self.collectionView relativeHeightForItemAtIndexPath:indexPath];
+        
+        if ([self canUseDoubleColumnOnIndex:columnIndex] &&
+            [self.delegate collectionView:self.collectionView isDoubleColumnAtIndexPath:indexPath]){
             
-            if ([self.delegate collectionView:self.collectionView isDoubleColumnAtIndexPath:indexPath]){
-                itemWidth = [self columnWidth] * 2;
-                itemRelativeHeight = [self.delegate collectionView:self.collectionView
-                                  relativeHeightForItemAtIndexPath:indexPath
-                                                      doubleColumn:YES];
-                itemHeight = itemRelativeHeight * itemWidth;
-                
-                //  Set column height
-                _columns[columnIndex] = @(yOffset + itemHeight);
-                _columns[columnIndex+1] = @(yOffset + itemHeight);
-            }else{
-                itemWidth = [self columnWidth];
-                itemRelativeHeight = [self.delegate collectionView:self.collectionView
-                                  relativeHeightForItemAtIndexPath:indexPath
-                                                      doubleColumn:NO];
-                itemHeight = itemRelativeHeight * itemWidth;
-                
-                //  Set column height
-                _columns[columnIndex] = @(yOffset + itemHeight);
-            }
+            itemWidth = [self columnWidth] * 2;
+            itemHeight = itemRelativeHeight * itemWidth;
+            
+            //  Set column height
+            _columns[columnIndex] = @(yOffset + itemHeight);
+            _columns[columnIndex+1] = @(yOffset + itemHeight);
 
         }else{
             itemWidth = [self columnWidth];
-            itemRelativeHeight = [self.delegate collectionView:self.collectionView
-                              relativeHeightForItemAtIndexPath:indexPath
-                                                  doubleColumn:NO];
             itemHeight = itemRelativeHeight * itemWidth;
             
             //  Set column height
