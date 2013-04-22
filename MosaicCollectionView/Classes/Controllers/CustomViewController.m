@@ -40,6 +40,11 @@
                                                     inSection:0];
     [_collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
     
+    //  Animations are fun :-)
+    [_collectionView scrollToItemAtIndexPath:newIndexPath
+                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                        animated:YES];
+    
     NSLog(@"#DEBUG %@", NSStringFromSelector(_cmd));
 }
 
