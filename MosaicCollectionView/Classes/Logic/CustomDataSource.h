@@ -11,8 +11,6 @@
 @interface CustomDataSource : NSObject <UICollectionViewDataSource>{
 }
 
-@property (weak) UICollectionView *collectionView;
-@property (nonatomic, strong) NSOperationQueue *thumbnailQueue;
 @property (readonly) NSMutableArray *elements;
 
 @end
