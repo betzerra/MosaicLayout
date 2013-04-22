@@ -14,7 +14,6 @@
 -(NSUInteger)shortestColumnIndex;
 -(NSUInteger)longestColumnIndex;
 -(BOOL)canUseDoubleColumnOnIndex:(NSUInteger)columnIndex;
--(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width;
 @end
 
 @implementation MosaicLayout
@@ -61,13 +60,6 @@
         retVal = firstColumnHeight == secondColumnHeight;
     }
     
-    return retVal;
-}
-
--(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width{
-    int halfWidth = width/2;
-    float retVal = width + (arc4random() % halfWidth);
-    retVal = retVal - ((int)retVal % kHeightModule);
     return retVal;
 }
 
