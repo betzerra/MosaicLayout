@@ -22,4 +22,5 @@ typedef enum {
 @property (strong) NSString *title;
 @property (assign) BOOL firstTimeShown;
 @property (assign) MosaicLayoutType layoutType;
+@property (assign) float relativeHeight;
 @end
