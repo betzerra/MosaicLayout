@@ -9,9 +9,9 @@ It's using the **Lightbox algorithm** described in @vjeux's blog and taking adva
 - Import all the files from Libs/MosaicLayout folder.
 - Add a UICollectionView view, change its layout to "Custom" and set its class to "MosaicLayout".
 - Implement UICollectionView's delegates.
-- Implement *MosaicLayoutDelegate* protocol.
+- Implement **MosaicLayoutDelegate** protocol.
 
-###MosaicLayoutDelegate
+##MosaicLayoutDelegate
 ```objc
 -(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath;
 -(BOOL)collectionView:(UICollectionView *)collectionView isDoubleColumnAtIndexPath:(NSIndexPath *)indexPath;
