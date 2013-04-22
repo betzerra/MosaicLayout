@@ -118,7 +118,7 @@
 
 -(NSUInteger)numberOfColumnsInCollectionView:(UICollectionView *)collectionView{
     
-    UIDeviceOrientation anOrientation = [UIDevice currentDevice].orientation;
+    UIInterfaceOrientation anOrientation = self.interfaceOrientation;
     
     //  Set the quantity of columns according of the device and interface orientation
     NSUInteger retVal = 0;
@@ -138,7 +138,7 @@
             retVal = kColumnsiPhonePortrait;
         }
     }
-    
+        
     return retVal;
 }
 
