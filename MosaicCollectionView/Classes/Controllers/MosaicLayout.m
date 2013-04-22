@@ -109,6 +109,7 @@
             
             itemWidth = [self columnWidth] * 2;
             itemHeight = itemRelativeHeight * itemWidth;
+            itemHeight = itemHeight - (itemHeight % kHeightModule);            
             
             //  Set column height
             _columns[columnIndex] = @(yOffset + itemHeight);
@@ -117,6 +118,7 @@
         }else{
             itemWidth = [self columnWidth];
             itemHeight = itemRelativeHeight * itemWidth;
+            itemHeight = itemHeight - (itemHeight % kHeightModule);            
             
             //  Set column height
             _columns[columnIndex] = @(yOffset + itemHeight);
