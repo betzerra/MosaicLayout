@@ -37,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		670C0E1317245C23001239B9 /* MosaicLayoutDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MosaicLayoutDelegate.h; path = MosaicCollectionView/Classes/Protocols/MosaicLayoutDelegate.h; sourceTree = SOURCE_ROOT; };
 		670F3B6516D1481300B471D1 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		670F3B6616D1481300B471D1 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		670F3B6716D1481300B471D1 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -101,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		670C0E1417245E24001239B9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				670C0E1317245C23001239B9 /* MosaicLayoutDelegate.h */,
+			);
+			name = Protocols;
+			path = Classes/Controllers;
+			sourceTree = "<group>";
+		};
 		670F3B6316D1481200B471D1 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +204,7 @@
 		678E52BB16D0535B00B34D6F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				670C0E1417245E24001239B9 /* Protocols */,
 				678E52D416D089DD00B34D6F /* Entities */,
 				678E52BD16D066BC00B34D6F /* Controllers */,
 				678E52BC16D0536200B34D6F /* Views */,

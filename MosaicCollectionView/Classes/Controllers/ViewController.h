@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MosaicLayoutDelegate.h"
 
-@interface ViewController : UIViewController{
+#define kColumnsiPadLandscape 5
+#define kColumnsiPadPortrait 4
+#define kColumnsiPhoneLandscape 3
+#define kColumnsiPhonePortrait 2
+
+@interface ViewController : UIViewController <MosaicLayoutDelegate>{
     __weak IBOutlet UICollectionView *_collectionView;
 }
 

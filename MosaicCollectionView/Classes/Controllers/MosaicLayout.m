@@ -8,7 +8,6 @@
 
 #import "MosaicLayout.h"
 
-#define kDoubleColumnProbability 40
 #define kHeightModule 40
 
 @interface MosaicLayout()
@@ -58,13 +57,8 @@
     if (columnIndex < self.columnsQuantity-1){
         float firstColumnHeight = [_columns[columnIndex] floatValue];
         float secondColumnHeight = [_columns[columnIndex+1] floatValue];
-        
-        if (firstColumnHeight == secondColumnHeight){
-            NSUInteger random = arc4random() % 100;
-            if (random < kDoubleColumnProbability){
-                retVal = YES;
-            }
-        }
+
+        retVal = firstColumnHeight == secondColumnHeight;
     }
     
     return retVal;
@@ -85,7 +79,7 @@
     return retVal;
 }
 
-#pragma mark UICollectionViewLayout
+#pragma mark Public
 
 -(void)prepareLayout{
     
@@ -109,17 +103,36 @@
 
         NSUInteger itemWidth = 0;
         NSUInteger itemHeight = 0;
+        float itemRelativeHeight = 0;
         if ([self canUseDoubleColumnOnIndex:columnIndex]){
-            itemWidth = [self columnWidth] * 2;
-            itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth*0.75];
             
-            //  Set column height
-            _columns[columnIndex] = @(yOffset + itemHeight);
-            _columns[columnIndex+1] = @(yOffset + itemHeight);
+            if ([self.delegate collectionView:self.collectionView isDoubleColumnAtIndexPath:indexPath]){
+                itemWidth = [self columnWidth] * 2;
+                itemRelativeHeight = [self.delegate collectionView:self.collectionView
+                                  relativeHeightForItemAtIndexPath:indexPath
+                                                      doubleColumn:YES];
+                itemHeight = itemRelativeHeight * itemWidth;
+                
+                //  Set column height
+                _columns[columnIndex] = @(yOffset + itemHeight);
+                _columns[columnIndex+1] = @(yOffset + itemHeight);
+            }else{
+                itemWidth = [self columnWidth];
+                itemRelativeHeight = [self.delegate collectionView:self.collectionView
+                                  relativeHeightForItemAtIndexPath:indexPath
+                                                      doubleColumn:NO];
+                itemHeight = itemRelativeHeight * itemWidth;
+                
+                //  Set column height
+                _columns[columnIndex] = @(yOffset + itemHeight);
+            }
 
         }else{
             itemWidth = [self columnWidth];
-            itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth];
+            itemRelativeHeight = [self.delegate collectionView:self.collectionView
+                              relativeHeightForItemAtIndexPath:indexPath
+                                                  doubleColumn:NO];
+            itemHeight = itemRelativeHeight * itemWidth;
             
             //  Set column height
             _columns[columnIndex] = @(yOffset + itemHeight);

@@ -11,14 +11,44 @@
 #import "MosaicData.h"
 #import "CustomDataSource.h"
 
-@interface ViewController ()
+#define kDoubleColumnProbability 40
 
+@interface ViewController ()
+-(void)updateColumnsQuantityToInterfaceOrientation:(UIInterfaceOrientation)anOrientation;
 @end
 
 @implementation ViewController
 
+#pragma mark - Private
+
+-(void)updateColumnsQuantityToInterfaceOrientation:(UIInterfaceOrientation)anOrientation{
+    //  Set the quantity of columns according of the device and interface orientation
+    NSUInteger columns = 0;
+    if (UIInterfaceOrientationIsLandscape(anOrientation)){
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            columns = kColumnsiPadLandscape;
+        }else{
+            columns = kColumnsiPhoneLandscape;
+        }
+        
+    }else{
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            columns = kColumnsiPadPortrait;
+        }else{
+            columns = kColumnsiPhonePortrait;
+        }
+    }
+    
+    [(MosaicLayout *)_collectionView.collectionViewLayout setColumnsQuantity:columns];
+}
+
+#pragma mark - Public
+
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [(MosaicLayout *)_collectionView.collectionViewLayout setDelegate:self];
     [(MosaicLayout *)_collectionView.collectionViewLayout setColumnsQuantity:3];
     
     /*  This is not very cool. We first set the UICollectionView's dataSource and then
@@ -43,6 +73,49 @@
     [_collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
     
     NSLog(@"#DEBUG %@", NSStringFromSelector(_cmd));
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self updateColumnsQuantityToInterfaceOrientation:toInterfaceOrientation];
+    MosaicLayout *layout = (MosaicLayout *)_collectionView.collectionViewLayout;
+    [layout invalidateLayout];
+}
+
+#pragma mark - MosaicLayoutDelegate
+
+-(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath doubleColumn:(BOOL)isDoubleColumn{
+    
+    float retVal = 1.0;
+    
+    if (isDoubleColumn){
+        retVal = 0.75;
+    }
+    
+    return retVal;
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView isDoubleColumnAtIndexPath:(NSIndexPath *)indexPath{
+    NSMutableArray *elements = [(CustomDataSource *)_collectionView.dataSource elements];
+    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
+    
+    if (aMosaicModule.layoutType == kMosaicLayoutTypeUndefined){
+        
+        /*  First layout. We have to decide if the MosaicData should be
+         *  double column (if possible) or not. */
+        
+        NSUInteger random = arc4random() % 100;
+        if (random < kDoubleColumnProbability){
+            aMosaicModule.layoutType = kMosaicLayoutTypeDouble;
+        }else{
+            aMosaicModule.layoutType = kMosaicLayoutTypeSingle;
+        }
+    }
+    
+    BOOL retVal = aMosaicModule.layoutType == kMosaicLayoutTypeDouble;
+    
+    return retVal;
+    
 }
 
 @end

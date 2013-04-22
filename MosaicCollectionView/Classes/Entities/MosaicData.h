@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    kMosaicLayoutTypeUndefined,
+    kMosaicLayoutTypeSingle,
+    kMosaicLayoutTypeDouble
+} MosaicLayoutType;
+
 @interface MosaicData : NSObject
 
 -(id)initWithDictionary:(NSDictionary *)aDict;
@@ -15,4 +21,5 @@
 @property (strong) NSString *imageFilename;
 @property (strong) NSString *title;
 @property (assign) BOOL firstTimeShown;
+@property (assign) MosaicLayoutType layoutType;
 @end
