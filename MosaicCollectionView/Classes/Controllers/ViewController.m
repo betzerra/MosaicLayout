@@ -22,12 +22,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [(MosaicLayout *)_collectionView.collectionViewLayout setDelegate:self];
-    
-    /*  This is not very cool. We first set the UICollectionView's dataSource and then
-     *  we do the other way around. Doesn't make any sense to set the UICollectionView for the
-     *  datasource */
-    [(CustomDataSource *)_collectionView.dataSource setCollectionView:_collectionView];
+    [(MosaicLayout *)_collectionView.collectionViewLayout setDelegate:self];    
 }
 
 - (IBAction)addButtonPressed:(id)sender {
@@ -58,27 +53,34 @@
 #pragma mark - MosaicLayoutDelegate
 
 -(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath doubleColumn:(BOOL)isDoubleColumn{
-    
+
     //  Base relative height for simple layout type. This is 1.0 (height equals to width)
     float retVal = 1.0;
     
-    if (isDoubleColumn){
-        //  Base relative height for double layout type. This is 0.75 (height equals to 75% width)
-        retVal = 0.75;
-    }
-    
-    /*  Relative height random modifier. The max height of relative height is 25% more than
-     *  the base relative height */
-    
-    float extraRandomHeight = arc4random() % 25;
-    retVal = retVal + (extraRandomHeight / 100);
-    
-    /*  Persist the relative height on MosaicData so the value will be the same every time
-     *  the mosaic layout invalidates */
-    
     NSMutableArray *elements = [(CustomDataSource *)_collectionView.dataSource elements];
     MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
-    if (aMosaicModule.relativeHeight == 0){
+    
+    if (aMosaicModule.relativeHeight != 0){
+
+        //  If the relative height was set before, return it
+        retVal = aMosaicModule.relativeHeight;
+        
+    }else{
+        
+        if (isDoubleColumn){
+            //  Base relative height for double layout type. This is 0.75 (height equals to 75% width)
+            retVal = 0.75;
+        }
+        
+        /*  Relative height random modifier. The max height of relative height is 25% more than
+         *  the base relative height */
+        
+        float extraRandomHeight = arc4random() % 25;
+        retVal = retVal + (extraRandomHeight / 100);
+        
+        /*  Persist the relative height on MosaicData so the value will be the same every time
+         *  the mosaic layout invalidates */
+        
         aMosaicModule.relativeHeight = retVal;
     }
     
