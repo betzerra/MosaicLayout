@@ -16,3 +16,5 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+
+MosaicCollectionView.xcodeproj/project.xcworkspace/xcuserdata
