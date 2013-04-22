@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Betzerra. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CustomViewController.h"
 #import "MosaicLayout.h"
 #import "MosaicData.h"
 #import "CustomDataSource.h"
 
 #define kDoubleColumnProbability 40
 
-@interface ViewController ()
+@interface CustomViewController ()
 @end
 
-@implementation ViewController
+@implementation CustomViewController
 
 #pragma mark - Public
 

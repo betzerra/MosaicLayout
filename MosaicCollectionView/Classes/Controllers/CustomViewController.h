@@ -14,7 +14,7 @@
 #define kColumnsiPhoneLandscape 3
 #define kColumnsiPhonePortrait 2
 
-@interface ViewController : UIViewController <MosaicLayoutDelegate>{
+@interface CustomViewController : UIViewController <MosaicLayoutDelegate>{
     __weak IBOutlet UICollectionView *_collectionView;
 }
 
