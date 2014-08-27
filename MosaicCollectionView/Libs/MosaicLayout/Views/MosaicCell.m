@@ -47,36 +47,19 @@
     [self addSubview:_titleLabel];
 }
 
--(void)cropImage{
+-(void)cropImage {
+    
     UIImage *anImage = _imageView.image;
     
-    if (anImage){
-        //  Cropping algorithm
-        CGSize imgFinalSize = CGSizeZero;
-        if (anImage.size.width < anImage.size.height){
-            imgFinalSize.width = self.bounds.size.width;
-            imgFinalSize.height = self.bounds.size.width * anImage.size.height / anImage.size.width;
-            
-            //  This is to avoid black bars on the bottom and top of the image
-            //  Happens when images have its height lesser than its bounds
-            if (imgFinalSize.height < self.bounds.size.height){
-                imgFinalSize.width = self.bounds.size.height * self.bounds.size.width / imgFinalSize.height;
-                imgFinalSize.height = self.bounds.size.height;
-            }
-        }else{
-            imgFinalSize.height = self.bounds.size.height;
-            imgFinalSize.width = self.bounds.size.height * anImage.size.width / anImage.size.height;
-            
-            //  This is to avoid black bars on the left and right of the image
-            //  Happens when images have its width lesser than its bounds
-            if (imgFinalSize.width < self.bounds.size.width){
-                imgFinalSize.height = self.bounds.size.height * self.bounds.size.width / imgFinalSize.height;
-                imgFinalSize.width = self.bounds.size.width;
-            }
-        }
-        _imageView.frame = CGRectMake(0, 0, imgFinalSize.width, imgFinalSize.height);
+    if (anImage) {
+        
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         _imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        _imageView.clipsToBounds = YES;
+        
     }
+    
 }
 
 #pragma mark - Properties

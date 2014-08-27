@@ -8,14 +8,12 @@
 
 #import "MosaicLayout.h"
 
-#define kDoubleColumnProbability 40
 #define kHeightModule 40
 
 @interface MosaicLayout()
 -(NSUInteger)shortestColumnIndex;
 -(NSUInteger)longestColumnIndex;
 -(BOOL)canUseDoubleColumnOnIndex:(NSUInteger)columnIndex;
--(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width;
 @end
 
 @implementation MosaicLayout
@@ -58,22 +56,17 @@
     if (columnIndex < self.columnsQuantity-1){
         float firstColumnHeight = [_columns[columnIndex] floatValue];
         float secondColumnHeight = [_columns[columnIndex+1] floatValue];
-        
-        if (firstColumnHeight == secondColumnHeight){
-            NSUInteger random = arc4random() % 100;
-            if (random < kDoubleColumnProbability){
-                retVal = YES;
-            }
-        }
+
+        retVal = firstColumnHeight == secondColumnHeight;
     }
     
     return retVal;
 }
 
--(float)heightForIndexPath:(NSIndexPath *)indexPath withWidth:(float)width{
-    int halfWidth = width/2;
-    float retVal = width + (arc4random() % halfWidth);
-    retVal = retVal - ((int)retVal % kHeightModule);
+#pragma mark - Properties
+
+-(NSUInteger) columnsQuantity{
+    NSUInteger retVal = [self.delegate numberOfColumnsInCollectionView:self.collectionView];
     return retVal;
 }
 
@@ -109,9 +102,14 @@
 
         NSUInteger itemWidth = 0;
         NSUInteger itemHeight = 0;
-        if ([self canUseDoubleColumnOnIndex:columnIndex]){
+        float itemRelativeHeight = [self.delegate collectionView:self.collectionView relativeHeightForItemAtIndexPath:indexPath];
+        
+        if ([self canUseDoubleColumnOnIndex:columnIndex] &&
+            [self.delegate collectionView:self.collectionView isDoubleColumnAtIndexPath:indexPath]){
+            
             itemWidth = [self columnWidth] * 2;
-            itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth*0.75];
+            itemHeight = itemRelativeHeight * itemWidth;
+            itemHeight = itemHeight - (itemHeight % kHeightModule);            
             
             //  Set column height
             _columns[columnIndex] = @(yOffset + itemHeight);
@@ -119,7 +117,8 @@
 
         }else{
             itemWidth = [self columnWidth];
-            itemHeight = [self heightForIndexPath:indexPath withWidth:itemWidth];
+            itemHeight = itemRelativeHeight * itemWidth;
+            itemHeight = itemHeight - (itemHeight % kHeightModule);            
             
             //  Set column height
             _columns[columnIndex] = @(yOffset + itemHeight);
@@ -140,6 +139,11 @@
     }];
     
     NSArray *retVal = [_itemsAttributes filteredArrayUsingPredicate:filterPredicate];
+    return retVal;
+}
+
+-(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewLayoutAttributes *retVal = [_itemsAttributes objectAtIndex:indexPath.row];
     return retVal;
 }
 
