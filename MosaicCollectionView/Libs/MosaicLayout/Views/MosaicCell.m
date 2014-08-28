@@ -12,10 +12,10 @@
 
 #define kLabelHeight 20
 #define kLabelMargin 10
+#define kImageViewMargin 0
 
 @interface MosaicCell()
 -(void)setup;
--(void)cropImage;
 @end
 
 @implementation MosaicCell
@@ -25,10 +25,50 @@
 #pragma mark - Private
 
 -(void)setup{
+    self.backgroundColor = [UIColor whiteColor];
+    
     //  Set image view
-    _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [_imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageView.clipsToBounds = YES;
+    
     [self addSubview:_imageView];
+    
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1
+                                                                       constant:kImageViewMargin];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                       attribute:NSLayoutAttributeRight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1
+                                                                        constant:-kImageViewMargin];
+    
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1
+                                                                      constant:kImageViewMargin];
+    
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:self
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                       multiplier:1
+                                                                         constant:-kImageViewMargin];
+    
+    NSArray *constraints = @[leftConstraint, rightConstraint, topConstraint, bottomConstraint];
+    [self addConstraints:constraints];
     
     //  Added black stroke
     self.layer.borderWidth = 1;
@@ -47,21 +87,6 @@
     [self addSubview:_titleLabel];
 }
 
--(void)cropImage {
-    
-    UIImage *anImage = _imageView.image;
-    
-    if (anImage) {
-        
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
-        _imageView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-        _imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        _imageView.clipsToBounds = YES;
-        
-    }
-    
-}
-
 #pragma mark - Properties
 
 -(UIImage *)image{
@@ -70,8 +95,6 @@
 
 -(void)setImage:(UIImage *)newImage{
     _imageView.image = newImage;
-    
-    [self cropImage];
     
     if (_mosaicData.firstTimeShown){
         _mosaicData.firstTimeShown = NO;
@@ -164,7 +187,9 @@
                                   self.bounds.size.width - kLabelMargin * 2,
                                   kLabelHeight);
     
-    [self cropImage];
+    _imageView.layer.shadowOffset = CGSizeMake(8, 8);
+    _imageView.layer.shadowColor = [UIColor redColor].CGColor;
+    _imageView.layer.shadowOpacity = 1;
 }
 
 -(void)prepareForReuse{
