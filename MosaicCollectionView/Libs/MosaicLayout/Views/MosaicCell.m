@@ -12,9 +12,11 @@
 
 #define kLabelHeight 20
 #define kLabelMargin 10
-#define kImageViewMargin 0
+#define kImageViewMargin 10
 
 @interface MosaicCell()
+-(void)setupContentView;
+-(void)setupImageView;
 -(void)setup;
 @end
 
@@ -24,18 +26,24 @@
 
 #pragma mark - Private
 
--(void)setup{
-    self.backgroundColor = [UIColor whiteColor];
-    
+-(void)setupContentView{
     //  Set image view
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [_imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
-    _imageView.clipsToBounds = YES;
+    _contentView = [[UIView alloc] initWithFrame:CGRectZero];
+    [_contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self addSubview:_imageView];
+    //  Border
+    _contentView.layer.borderColor = [UIColor blackColor].CGColor;
+    _contentView.layer.borderWidth = 2.0;
     
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+    //  Shadow
+    _contentView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _contentView.layer.shadowRadius = 4.0;
+    _contentView.layer.shadowOpacity = 0.5;
+    _contentView.layer.shadowOffset = CGSizeMake(2, 2);
+
+    [self addSubview:_contentView];
+    
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:_contentView
                                                                       attribute:NSLayoutAttributeLeft
                                                                       relatedBy:NSLayoutRelationEqual
                                                                          toItem:self
@@ -43,7 +51,7 @@
                                                                      multiplier:1
                                                                        constant:kImageViewMargin];
     
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:_contentView
                                                                        attribute:NSLayoutAttributeRight
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:self
@@ -51,7 +59,7 @@
                                                                       multiplier:1
                                                                         constant:-kImageViewMargin];
     
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_contentView
                                                                      attribute:NSLayoutAttributeTop
                                                                      relatedBy:NSLayoutRelationEqual
                                                                         toItem:self
@@ -59,7 +67,7 @@
                                                                     multiplier:1
                                                                       constant:kImageViewMargin];
     
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:_contentView
                                                                         attribute:NSLayoutAttributeBottom
                                                                         relatedBy:NSLayoutRelationEqual
                                                                            toItem:self
@@ -69,10 +77,57 @@
     
     NSArray *constraints = @[leftConstraint, rightConstraint, topConstraint, bottomConstraint];
     [self addConstraints:constraints];
+}
+
+-(void)setupImageView{
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageView.clipsToBounds = YES;
     
-    //  Added black stroke
-    self.layer.borderWidth = 1;
-    self.layer.borderColor = [UIColor blackColor].CGColor;
+    [_contentView addSubview:_imageView];
+    
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:_contentView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1
+                                                                       constant:0];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                       attribute:NSLayoutAttributeRight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:_contentView
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1
+                                                                        constant:0];
+    
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:_contentView
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1
+                                                                      constant:0];
+    
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:_imageView
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:_contentView
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                       multiplier:1
+                                                                         constant:0];
+    
+    NSArray *constraints = @[leftConstraint, rightConstraint, topConstraint, bottomConstraint];
+    [_contentView addConstraints:constraints];
+}
+
+-(void)setup{
+    
+    [self setupContentView];
+    [self setupImageView];
+    
     self.clipsToBounds = YES;
     
     //  UILabel for title    

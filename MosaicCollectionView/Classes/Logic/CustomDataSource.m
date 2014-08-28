@@ -60,8 +60,7 @@
     MosaicData *data = [_elements objectAtIndex:indexPath.row];
     cell.mosaicData = data;
     
-    float randomWhite = (arc4random() % 40 + 10) / 255.0;
-    cell.backgroundColor = [UIColor colorWithWhite:randomWhite alpha:1];
+    cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
