@@ -29,10 +29,10 @@
 		678E52C516D07A3800B34D6F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678E52C416D07A3800B34D6F /* QuartzCore.framework */; };
 		678E52CA16D07E8000B34D6F /* CustomDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 678E52C916D07E8000B34D6F /* CustomDataSource.m */; };
 		678E52E916D08A4000B34D6F /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 678E52DF16D08A4000B34D6F /* data.json */; };
+		67BD6FCA19FC10110096820D /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BD6FC119FC10110096820D /* MosaicLayout.m */; };
+		67BD6FCB19FC10110096820D /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BD6FC419FC10110096820D /* MosaicData.m */; };
+		67BD6FCC19FC10110096820D /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BD6FC919FC10110096820D /* MosaicCell.m */; };
 		67C93E5317239BC0000CCB83 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C93E5217239BC0000CCB83 /* CustomViewController.m */; };
-		67DA1B2F1724DE8F00622C28 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA1B261724DE8F00622C28 /* MosaicLayout.m */; };
-		67DA1B301724DE8F00622C28 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA1B291724DE8F00622C28 /* MosaicData.m */; };
-		67DA1B311724DE8F00622C28 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA1B2E1724DE8F00622C28 /* MosaicCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,15 +73,15 @@
 		678E52C816D07E8000B34D6F /* CustomDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDataSource.h; path = Classes/Logic/CustomDataSource.h; sourceTree = "<group>"; };
 		678E52C916D07E8000B34D6F /* CustomDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDataSource.m; path = Classes/Logic/CustomDataSource.m; sourceTree = "<group>"; };
 		678E52DF16D08A4000B34D6F /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		67BD6FC019FC10110096820D /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
+		67BD6FC119FC10110096820D /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
+		67BD6FC319FC10110096820D /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
+		67BD6FC419FC10110096820D /* MosaicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicData.m; sourceTree = "<group>"; };
+		67BD6FC619FC10110096820D /* MosaicLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayoutDelegate.h; sourceTree = "<group>"; };
+		67BD6FC819FC10110096820D /* MosaicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicCell.h; sourceTree = "<group>"; };
+		67BD6FC919FC10110096820D /* MosaicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicCell.m; sourceTree = "<group>"; };
 		67C93E5117239BC0000CCB83 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		67C93E5217239BC0000CCB83 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
-		67DA1B251724DE8F00622C28 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
-		67DA1B261724DE8F00622C28 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
-		67DA1B281724DE8F00622C28 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
-		67DA1B291724DE8F00622C28 /* MosaicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicData.m; sourceTree = "<group>"; };
-		67DA1B2B1724DE8F00622C28 /* MosaicLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayoutDelegate.h; sourceTree = "<group>"; };
-		67DA1B2D1724DE8F00622C28 /* MosaicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicCell.h; sourceTree = "<group>"; };
-		67DA1B2E1724DE8F00622C28 /* MosaicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,6 @@
 		670F3B6316D1481200B471D1 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				67DA1B231724DE8F00622C28 /* MosaicLayout */,
 				670F3B6416D1481300B471D1 /* AFNetworking */,
 			);
 			path = Libs;
@@ -165,6 +164,7 @@
 		678E529B16D0510100B34D6F /* MosaicCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				67BD6FBE19FC10110096820D /* MosaicLayout */,
 				670F3B6316D1481200B471D1 /* Libs */,
 				678E52CC16D081CB00B34D6F /* Resources */,
 				678E52A416D0510100B34D6F /* AppDelegate.h */,
@@ -226,48 +226,48 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		67DA1B231724DE8F00622C28 /* MosaicLayout */ = {
+		67BD6FBE19FC10110096820D /* MosaicLayout */ = {
 			isa = PBXGroup;
 			children = (
-				67DA1B241724DE8F00622C28 /* Controllers */,
-				67DA1B271724DE8F00622C28 /* Entities */,
-				67DA1B2A1724DE8F00622C28 /* Protocols */,
-				67DA1B2C1724DE8F00622C28 /* Views */,
+				67BD6FBF19FC10110096820D /* Controllers */,
+				67BD6FC219FC10110096820D /* Entities */,
+				67BD6FC519FC10110096820D /* Protocols */,
+				67BD6FC719FC10110096820D /* Views */,
 			);
 			path = MosaicLayout;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
-		67DA1B241724DE8F00622C28 /* Controllers */ = {
+		67BD6FBF19FC10110096820D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				67DA1B251724DE8F00622C28 /* MosaicLayout.h */,
-				67DA1B261724DE8F00622C28 /* MosaicLayout.m */,
+				67BD6FC019FC10110096820D /* MosaicLayout.h */,
+				67BD6FC119FC10110096820D /* MosaicLayout.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		67DA1B271724DE8F00622C28 /* Entities */ = {
+		67BD6FC219FC10110096820D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				67DA1B281724DE8F00622C28 /* MosaicData.h */,
-				67DA1B291724DE8F00622C28 /* MosaicData.m */,
+				67BD6FC319FC10110096820D /* MosaicData.h */,
+				67BD6FC419FC10110096820D /* MosaicData.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		67DA1B2A1724DE8F00622C28 /* Protocols */ = {
+		67BD6FC519FC10110096820D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				67DA1B2B1724DE8F00622C28 /* MosaicLayoutDelegate.h */,
+				67BD6FC619FC10110096820D /* MosaicLayoutDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		67DA1B2C1724DE8F00622C28 /* Views */ = {
+		67BD6FC719FC10110096820D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				67DA1B2D1724DE8F00622C28 /* MosaicCell.h */,
-				67DA1B2E1724DE8F00622C28 /* MosaicCell.m */,
+				67BD6FC819FC10110096820D /* MosaicCell.h */,
+				67BD6FC919FC10110096820D /* MosaicCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,19 +342,19 @@
 				678E52A216D0510100B34D6F /* main.m in Sources */,
 				678E52A616D0510100B34D6F /* AppDelegate.m in Sources */,
 				678E52CA16D07E8000B34D6F /* CustomDataSource.m in Sources */,
+				67BD6FCC19FC10110096820D /* MosaicCell.m in Sources */,
 				670F3B7816D1481300B471D1 /* AFHTTPClient.m in Sources */,
 				670F3B7916D1481300B471D1 /* AFHTTPRequestOperation.m in Sources */,
 				670F3B7A16D1481300B471D1 /* AFImageRequestOperation.m in Sources */,
 				670F3B7B16D1481300B471D1 /* AFJSONRequestOperation.m in Sources */,
+				67BD6FCA19FC10110096820D /* MosaicLayout.m in Sources */,
+				67BD6FCB19FC10110096820D /* MosaicData.m in Sources */,
 				670F3B7C16D1481300B471D1 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				670F3B7D16D1481300B471D1 /* AFPropertyListRequestOperation.m in Sources */,
 				670F3B7E16D1481300B471D1 /* AFURLConnectionOperation.m in Sources */,
 				670F3B7F16D1481300B471D1 /* AFXMLRequestOperation.m in Sources */,
 				670F3B8016D1481300B471D1 /* UIImageView+AFNetworking.m in Sources */,
 				67C93E5317239BC0000CCB83 /* CustomViewController.m in Sources */,
-				67DA1B2F1724DE8F00622C28 /* MosaicLayout.m in Sources */,
-				67DA1B301724DE8F00622C28 /* MosaicData.m in Sources */,
-				67DA1B311724DE8F00622C28 /* MosaicCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
