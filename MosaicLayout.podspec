@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MosaicLayout"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "MosaicLayout using UICollectionViews"
   s.description  = "A layout very similar to MosaicUI that uses Lightbox algorithm described in @vjeux's blog and takes advantage of UICollectionView."
 
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/betzerra"
 
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/vinnyoodles/MosaicLayout.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/vinnyoodles/MosaicLayout.git", :tag => "0.0.2" }
   s.source_files  = "MosaicCollectionView/*"
-  s.exclude_files = "Classes/Exclude"
+  s.exclude_files = "MosaicCollectionView/*.png", "MosaicCollectionView/*.pch"
 end
